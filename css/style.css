@@ -1,0 +1,131 @@
+:root {
+    --HEIGHT: 700px;
+    --WIDTH: 1000px;
+    --MAPHEIGHT: 2000px;
+    --MAPWIDTH: 2000px;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    overflow: hidden;
+}
+
+#game-container {
+    z-index: 1;
+    height: var(--HEIGHT);
+    width: var(--WIDTH);
+    position: relative;
+    margin: calc((100vh - var(--HEIGHT)) / 2) auto;
+    background-color: blue;
+}
+
+.bg-cover {
+    z-index: 10;
+    /* height: 100px;
+    width: 100px; */
+    position: absolute;
+    background-color: white;
+}
+
+.bg-cover:nth-child(1) {
+    top: 0;
+    left: 0;
+    width: calc((100vw - var(--WIDTH)) / 2);
+    height: 100%;
+}
+
+.bg-cover:nth-child(2) {
+    top: 0;
+    width: 100%;
+    height: calc((100vh - var(--HEIGHT)) / 2);
+}
+
+.bg-cover:nth-child(3) {
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: calc((100vw - var(--WIDTH)) / 2);
+}
+
+.bg-cover:nth-child(4) {
+    bottom: 0;
+    width: 100%;
+    height: calc((100vh - var(--HEIGHT)) / 2);
+}
+
+#menu {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#ktka-bar {
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    width: 50px;
+    height: calc(var(--HEIGHT) - 100px);
+    background-color: red;
+    border-radius: 20px;
+}
+
+#lvl-name {
+    position: absolute;
+    top: 0px;
+    left: calc(var(--WIDTH) / 2 - 80px);
+    width: 160px;
+    height: 40px;
+    background-color: red;
+    border-radius: 0px 0px 25px 25px;
+    text-align: center;
+}
+
+#lvl-name p {
+    margin-top: 2px;
+    font-size: 34px;
+}
+
+#money-box {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 60px;
+    height: 50px;
+    background-color: red;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#money-box p {
+    margin-top: 15px;
+}
+
+.ui-element {
+    z-index: 3;
+}
+
+#map {
+    position: absolute;
+    z-index: 2;
+    cursor: move;
+    height: var(--MAPHEIGHT);
+    width: var(--MAPWIDTH);
+    background-image: url(../images/minesweeperGrid.png);
+}
+
+.building {
+    position: absolute;
+    top: 50px;
+    left: 200px;
+    height: 100px;
+    width: 130px;
+    text-align: center;
+    padding-top: 30px;
+    background-color: turquoise;
+}
