@@ -19,8 +19,20 @@ body {
     margin: calc((100vh - var(--HEIGHT)) / 2) auto;
 }
 
+#shadow-box {
+    z-index: 4;
+    height: var(--HEIGHT);
+    width: var(--WIDTH);
+    position: absolute;
+    margin: calc((100vh - var(--HEIGHT)) / 2) calc((100vw - var(--WIDTH)) / 2);
+    /* margin-left: calc((100vh - var(--WIDTH)) / 2) auto; */
+    /* background-color: blue; */
+    pointer-events: none;
+    box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030;
+}
+
 .bg-cover {
-    z-index: 10;
+    z-index: 3;
     /* height: 100px;
     width: 100px; */
     position: absolute;
