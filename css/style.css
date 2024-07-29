@@ -36,7 +36,7 @@ body {
     /* height: 100px;
     width: 100px; */
     position: absolute;
-    background-color: white;
+    background-color: black;
 }
 
 .bg-cover:nth-child(1) {
