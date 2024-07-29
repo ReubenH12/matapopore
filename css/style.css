@@ -17,7 +17,6 @@ body {
     width: var(--WIDTH);
     position: relative;
     margin: calc((100vh - var(--HEIGHT)) / 2) auto;
-    background-color: blue;
 }
 
 .bg-cover {
