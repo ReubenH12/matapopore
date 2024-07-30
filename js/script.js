@@ -10,6 +10,8 @@ let pos1 = 0,
 	pos3 = 0,
 	pos4 = 0;
 
+let ktkaValue = 50;
+
 window.onload = function () {
 	gameContainer = document.getElementById("game-container");
 	map = document.getElementById("map");
@@ -19,6 +21,13 @@ window.onload = function () {
 	mapWidth = map.style.width;
 	dragElement(map);
 };
+
+setInterval(function () {
+	let ktkaBarFill = document.getElementById("fill");
+	if (ktkaBarFill.offsetHeight != ktkaValue) {
+		ktkaBarFill.style.height = ktkaValue + "px";
+	}
+}, 100)
 
 function dragElement(elmnt) {
 	elmnt.onmousedown = dragMouseDown;
