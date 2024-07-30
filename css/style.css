@@ -63,7 +63,7 @@ body {
     height: calc((100vh - var(--HEIGHT)) / 2);
 }
 
-#menu {
+#menu-btn {
     position: absolute;
     top: 10px;
     left: 20px;
@@ -72,6 +72,7 @@ body {
     background-color: red;
     border-radius: 10px;
     text-align: center;
+    cursor: pointer;
 }
 
 #ktka-bar {
@@ -124,10 +125,6 @@ body {
     margin-top: 15px;
 }
 
-.ui-element {
-    z-index: 3;
-}
-
 #map {
     position: absolute;
     z-index: 2;
@@ -135,6 +132,38 @@ body {
     height: var(--MAPHEIGHT);
     width: var(--MAPWIDTH);
     background-image: url(../images/minesweeperGrid.png);
+}
+
+#home {
+    visibility: hidden;
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    width: 800px;
+    z-index: 5;
+    height: 600px;
+    border-radius: 20px;
+    background-color: red;
+}
+
+#home #close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    width: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.ui-element {
+    z-index: 3;
+}
+
+.blurred {
+    filter: blur(5)
 }
 
 .building {

@@ -19,15 +19,28 @@ window.onload = function () {
 	gameWidth = gameContainer.offsetWidth;
 	mapHeight = map.style.height;
 	mapWidth = map.style.width;
+	// document.getElementById("start-game").addEventListener("click", menuState("off"))
 	dragElement(map);
 };
 
-setInterval(function () {
+setInterval(function checkKtkaBar () {
 	let ktkaBarFill = document.getElementById("fill");
 	if (ktkaBarFill.offsetHeight != ktkaValue) {
 		ktkaBarFill.style.height = ktkaValue + "px";
 	}
 }, 100)
+
+function menuState(state) {
+	let homeMenu = document.getElementById("home");
+	let menuBtn = document.getElementById("menu-btn")
+	if (state == "on") {
+		homeMenu.style.visibility = "visible";
+		menuBtn.style.cursor = "initial"
+	} else if (state == "off") {
+		homeMenu.style.visibility = "hidden";
+		menuBtn.style.cursor = "pointer";
+	}
+}
 
 function dragElement(elmnt) {
 	elmnt.onmousedown = dragMouseDown;
