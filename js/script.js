@@ -12,6 +12,8 @@ let pos1 = 0,
 
 let ktkaValue = 50;
 
+let menuState = false;
+
 window.onload = function () {
 	gameContainer = document.getElementById("game-container");
 	map = document.getElementById("map");
@@ -19,7 +21,6 @@ window.onload = function () {
 	gameWidth = gameContainer.offsetWidth;
 	mapHeight = map.style.height;
 	mapWidth = map.style.width;
-	// document.getElementById("start-game").addEventListener("click", menuState("off"))
 	dragElement(map);
 };
 
@@ -30,20 +31,23 @@ setInterval(function checkKtkaBar () {
 	}
 }, 100)
 
-function menuState(state) {
-	let homeMenu = document.getElementById("home");
+function showMenu(menu) {
+	let menuToShow = document.getElementById(menu);
 	let uiElements = document.querySelectorAll(".ui-element");
-	let shadowBox = document.getElementById("shadow-box")
-	if (state == "on") {
-		homeMenu.style.visibility = "visible";
+	let shadowBox = document.getElementById("shadow-box");
+	menuState = !menuState;
+	if (menuState) {
+		menuToShow.style.visibility = "visible";
 		map.classList.add("blurred");
 		uiElements.forEach((x) => x.classList.add("blurred"));
-		shadowBox.style.pointerEvents = "initial"
-	} else if (state == "off") {
-		homeMenu.style.visibility = "hidden";
+		shadowBox.style.pointerEvents = "initial";
+		console.log(menuState);
+	} else if (!menuState) {
+		menuToShow.style.visibility = "hidden";
 		map.classList.remove("blurred");
 		uiElements.forEach((x) => x.classList.remove("blurred"));
 		shadowBox.style.pointerEvents = "none";
+		console.log(menuState)
 	}
 }
 

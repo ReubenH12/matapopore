@@ -21,7 +21,7 @@
             </div>
             <div id="shadow-box"></div>
             <div id="ui">
-                <div id="menu-btn" class="ui-element" onclick="menuState('on')">
+                <div id="menu-btn" class="ui-element" onclick="showMenu('home')">
                     <p>menu</p>
                 </div>
                 <div id="ktka-bar" class="ui-element">
@@ -30,11 +30,16 @@
                 <div id="lvl-name" class="ui-element">
                     <p>Tawa</p>
                 </div>
-                <div id="money-box" class="ui-element">
+                <div id="money-box" class="ui-element" onclick="showMenu('build')">
                     <p>$100</p>
                 </div>
-                <div id="home">
-                    <div id="close" onclick="menuState('off')">X</div>
+                <div id="home" class="menu">
+                    <div class="close" onclick="showMenu('home')">X</div>
+                    <h1>Home Menu</h1>
+                </div>
+                <div id="build" class="menu">
+                    <div class="close" onclick="showMenu('build')">X</div>
+                    <h1>Build Menu</h1>
                 </div>
             </div>
         </main>
