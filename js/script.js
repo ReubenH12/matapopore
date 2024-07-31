@@ -32,13 +32,21 @@ setInterval(function checkKtkaBar () {
 
 function menuState(state) {
 	let homeMenu = document.getElementById("home");
-	let menuBtn = document.getElementById("menu-btn")
+	let menuBtn = document.getElementById("menu-btn");
+	let uiElements = document.querySelectorAll(".ui-element");
+	let shadowBox = document.getElementById("shadow-box")
 	if (state == "on") {
 		homeMenu.style.visibility = "visible";
-		menuBtn.style.cursor = "initial"
+		menuBtn.style.cursor = "initial";
+		map.classList.add("blurred");
+		uiElements.forEach((x) => x.classList.add("blurred"));
+		shadowBox.style.pointerEvents = "initial"
 	} else if (state == "off") {
 		homeMenu.style.visibility = "hidden";
 		menuBtn.style.cursor = "pointer";
+		map.classList.remove("blurred");
+		uiElements.forEach((x) => x.classList.remove("blurred"));
+		shadowBox.style.pointerEvents = "none";
 	}
 }
 
