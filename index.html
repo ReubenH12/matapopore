@@ -21,7 +21,7 @@
             <div id="map">
                 <div class="building"><img src='images/house.png'></div>
             </div>
-            <div id="shadow-box"></div>
+            <div id="shadow-box" onclick="showMenu('pp')"></div>
             <div id="ui">
                 <div id="menu-btn" class="ui-element" onclick="showMenu('home')">
                     <p>menu</p>
@@ -35,6 +35,9 @@
                 <div id="money-box" class="ui-element" onclick="showMenu('build')">
                     <p>$100</p>
                 </div>
+                <div id="stats" class="ui-element" onclick="showMenu('moreStats')">
+                    <p>Statistics (happiness, etc.) can go here</p>
+                </div>
                 <div id="home" class="menu">
                     <div class="close" onclick="showMenu('home')">X</div>
                     <h1>Home Menu</h1>
@@ -42,6 +45,10 @@
                 <div id="build" class="menu">
                     <div class="close" onclick="showMenu('build')">X</div>
                     <h1>Build Menu</h1>
+                </div>
+                <div id="moreStats" class="menu">
+                    <div class="close" onclick="showMenu('moreStats')">X</div>
+                    <h1>Extra Statistics Menu</h1>
                 </div>
             </div>
         </main>

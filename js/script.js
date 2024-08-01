@@ -12,7 +12,7 @@ let pos1 = 0,
 
 let ktkaValue = 50;
 
-let menuState = false;
+let menuState = "";
 
 window.onload = function () {
 	gameContainer = document.getElementById("game-container");
@@ -33,21 +33,24 @@ setInterval(function checkKtkaBar () {
 
 function showMenu(menu) {
 	let menuToShow = document.getElementById(menu);
+	let currentMenu = document.getElementById(menuState);
 	let uiElements = document.querySelectorAll(".ui-element");
 	let shadowBox = document.getElementById("shadow-box");
-	menuState = !menuState;
-	if (menuState) {
+	// menuState = menu;
+	if (!menuState) {
 		menuToShow.style.visibility = "visible";
 		map.classList.add("blurred");
 		uiElements.forEach((x) => x.classList.add("blurred"));
 		shadowBox.style.pointerEvents = "initial";
-		console.log(menuState);
-	} else if (!menuState) {
-		menuToShow.style.visibility = "hidden";
+		menuState = menu;
+		console.log(`Set menuState to ${menuState} (2)`)
+	} else if (menuState) {
+		currentMenu.style.visibility = "hidden";
 		map.classList.remove("blurred");
 		uiElements.forEach((x) => x.classList.remove("blurred"));
 		shadowBox.style.pointerEvents = "none";
-		console.log(menuState)
+		menuState = "";
+		console.log(`Set menuState to ${menuState} (3)`);
 	}
 }
 
