@@ -95,7 +95,7 @@ body {
     top: 0px;
     left: calc(var(--WIDTH) / 2 - 80px);
     width: 160px;
-    height: 40px;
+    height: 47px;
     background-color: red;
     border-radius: 0px 0px 25px 25px;
     text-align: center;
