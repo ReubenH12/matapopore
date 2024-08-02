@@ -36,21 +36,18 @@ function showMenu(menu) {
 	let currentMenu = document.getElementById(menuState);
 	let uiElements = document.querySelectorAll(".ui-element");
 	let shadowBox = document.getElementById("shadow-box");
-	// menuState = menu;
 	if (!menuState) {
 		menuToShow.style.visibility = "visible";
 		map.classList.add("blurred");
 		uiElements.forEach((x) => x.classList.add("blurred"));
 		shadowBox.style.pointerEvents = "initial";
 		menuState = menu;
-		console.log(`Set menuState to ${menuState} (2)`)
 	} else if (menuState) {
 		currentMenu.style.visibility = "hidden";
 		map.classList.remove("blurred");
 		uiElements.forEach((x) => x.classList.remove("blurred"));
 		shadowBox.style.pointerEvents = "none";
 		menuState = "";
-		console.log(`Set menuState to ${menuState} (3)`);
 	}
 }
 
