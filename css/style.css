@@ -71,6 +71,17 @@ body {
     cursor: pointer;
 }
 
+.menublock {
+    border-radius: 25px;
+    width: 200px;
+    height: 100px;
+    background: #73AD21;
+}
+
+.menucontain {
+    display: flex;
+}
+
 #ktka-bar {
     position: absolute;
     top: 80px;
