@@ -7,21 +7,24 @@ let gameContainer,
 
 let pos1 = 0,
 	pos2 = 0,
-	pos3 = 0,
-	pos4 = 0;
+	cursorX = 0,
+	cursorY = 0;
 
 let ktkaValue = 50;
 
 let menuState = "";
+
+const cellSize = 200;
 
 window.onload = function () {
 	gameContainer = document.getElementById("game-container");
 	map = document.getElementById("map");
 	gameHeight = gameContainer.offsetHeight;
 	gameWidth = gameContainer.offsetWidth;
-	mapHeight = map.style.height;
-	mapWidth = map.style.width;
+	mapHeight = map.offsetHeight;
+	mapWidth = map.offsetWidth;
 	dragElement(map);
+	makeGrid();
 };
 
 setInterval(function checkKtkaBar () {
@@ -52,13 +55,15 @@ function showMenu(menu) {
 }
 
 function dragElement(elmnt) {
+	let maxXpos = 0 - mapWidth + gameWidth;
+	let maxYpos = 0 - mapHeight + gameHeight;
 	elmnt.onmousedown = dragMouseDown;
 
 	function dragMouseDown(e) {
 		e.preventDefault();
 		// Get the mouse cursor position at startup:
-		pos3 = e.clientX;
-		pos4 = e.clientY;
+		cursorX = e.clientX;
+		cursorY = e.clientY;
 		document.onmouseup = closeDragElement;
 		// Call a function whenever the cursor moves:
 		document.onmousemove = elementDrag;
@@ -67,12 +72,11 @@ function dragElement(elmnt) {
 	function elementDrag(e) {
 		e.preventDefault();
 		// Calculate the new cursor position:
-		pos1 = pos3 - e.clientX;
-		pos2 = pos4 - e.clientY;
-		pos3 = e.clientX;
-		pos4 = e.clientY;
-		let maxXpos = mapWidth - gameWidth;
-		let maxYpos = mapHeight - gameHeight;
+		pos1 = cursorX - e.clientX;
+		pos2 = cursorY - e.clientY;
+		cursorX = e.clientX;
+		cursorY = e.clientY;
+		// console.log(`MapX = ${elmnt.offsetLeft}, MapY = ${elmnt.offsetTop} ${pos1} ${pos2} ${cursorX} ${cursorY}`); // MAP POSITION DEBUG LINE
 		if (elmnt.offsetLeft - pos1 <= 0 && elmnt.offsetLeft - pos1 >= maxXpos) {
 			elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
 		}
@@ -85,5 +89,24 @@ function dragElement(elmnt) {
 		// Stop moving when mouse button is released:
 		document.onmouseup = null;
 		document.onmousemove = null;
+	}
+}
+
+function makeGrid () {
+	const cellColumns = mapWidth / cellSize;
+	const cellRows = mapHeight / cellSize;
+	const totalCells = cellColumns * cellRows;
+
+	for (let i = 0; i < cellColumns; i++) {
+		map.style.gridTemplateColumns = map.style.gridTemplateColumns + ` ${cellSize}px`;
+	}
+
+	for (let i = 0; i < cellRows; i++) {
+		map.style.gridTemplateRows = map.style.gridTemplateRows + ` ${cellSize}px`;
+	}
+
+	for (let i = 0; i < totalCells; i++) {
+		let newDiv = document.createElement("div");
+		map.appendChild(newDiv);
 	}
 }

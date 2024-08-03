@@ -137,6 +137,11 @@ body {
     height: var(--MAPHEIGHT);
     width: var(--MAPWIDTH);
     background-image: url(../images/mapBackground.png);
+    display: grid;
+}
+
+#map > div {
+    border: 2px solid red;
 }
 
 .menu {
