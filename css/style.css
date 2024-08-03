@@ -71,18 +71,6 @@ body {
     cursor: pointer;
 }
 
-.menublock {
-    border-radius: 25px;
-    width: 200px;
-    height: 100px;
-    background: #73AD21;
-    margin: 10px;
-}
-
-.menucontain {
-    display: flex;
-}
-
 #ktka-bar {
     position: absolute;
     top: 80px;
@@ -175,6 +163,13 @@ body {
     cursor: pointer;
 }
 
+.menu > h1 {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    margin: 0;
+}
+
 .blurred {
     filter: blur(4px);
     transition-duration: 100ms;
@@ -191,4 +186,24 @@ body {
 .building img {
     height: 100px;
     width: 100px;
+}
+
+#home #button-container {
+    position: absolute;
+    top: 90px;
+    left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#home .button-box {
+    border-radius: 25px;
+    width: 200px;
+    height: 100px;
+    background: #73AD21;
+    margin: 10px;
+}
+
+#home .button-box > p{
+    margin: 20px;
 }
