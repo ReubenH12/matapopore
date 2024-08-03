@@ -136,7 +136,7 @@ body {
     cursor: move;
     height: var(--MAPHEIGHT);
     width: var(--MAPWIDTH);
-    background-image: url(../images/minesweeperGrid.png);
+    background-image: url(../images/mapBackground.png);
 }
 
 .menu {
