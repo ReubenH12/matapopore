@@ -110,3 +110,9 @@ function makeGrid () {
 		map.appendChild(newDiv);
 	}
 }
+
+function addToCell (x, y) {
+	let cellIndex = x + y * 10;
+	let cell = document.querySelector(`#map > div:nth-child(${cellIndex + 1})`);
+	cell.style.backgroundColor = "red";
+}
