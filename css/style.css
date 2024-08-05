@@ -199,7 +199,7 @@ body {
     width: 100px;
 }
 
-#home #button-container {
+.menu #button-container {
     position: absolute;
     top: 90px;
     left: 10px;
@@ -207,7 +207,7 @@ body {
     flex-wrap: wrap;
 }
 
-#home .button-box {
+.menu .button-box {
     border-radius: 25px;
     width: 220px;
     height: 150px;
@@ -215,18 +215,15 @@ body {
     margin: 10px;
 }
 
-#home .button-box > p{
+.menu .button-box > p {
     margin: 20px;
 }
 
 #menutext {
     font-size: 40px;
-
 }
 
 #menuheader {
     font-size: 50px;
     padding-bottom: 10px;
-
-
 }
