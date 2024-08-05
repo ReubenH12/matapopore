@@ -14,9 +14,12 @@ let ktkaValue = 50;
 
 let menuState = "";
 
-const cellSize = 200;
+const cellSize = 150;
+
+const styleElement = document.createElement("style");
 
 window.onload = function () {
+	document.head.appendChild(styleElement);
 	gameContainer = document.getElementById("game-container");
 	map = document.getElementById("map");
 	gameHeight = gameContainer.offsetHeight;
@@ -111,8 +114,22 @@ function makeGrid () {
 	}
 }
 
-function addToCell (x, y) {
+function addToCell (x, y, ...rest) {
 	let cellIndex = x + y * 10;
 	let cell = document.querySelector(`#map > div:nth-child(${cellIndex + 1})`);
-	cell.style.backgroundColor = "red";
+	for (let i = 0; i < rest.length; i++) {
+		let newElement = document.createElement(rest[i][0]);
+		cell.appendChild(newElement);
+		newElement.setAttribute(`${rest[i][1]}`, `${rest[i][2]}`);
+		styleElement.sheet.insertRule(`#map > div:nth-child(${cellIndex + 1}) ${rest[i][3]}`);
+	}
+}
+
+function makeMap () {
+	addToCell(1, 1, ["img", "src", "images/building1.png",
+		`img {
+			height: 20px;
+			width: 20px;
+		}`]
+	);
 }

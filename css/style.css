@@ -1,8 +1,8 @@
 :root {
     --HEIGHT: 700px;
     --WIDTH: 1000px;
-    --MAPHEIGHT: 2000px;
-    --MAPWIDTH: 2000px;
+    --MAPHEIGHT: 1500px;
+    --MAPWIDTH: 1500px;
 }
 
 body {
@@ -143,6 +143,12 @@ body {
 #map > div {
     border: 2px solid red;
 }
+
+/* #map > div > div {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+} */
 
 .menu {
     visibility: hidden;
