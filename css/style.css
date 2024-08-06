@@ -163,7 +163,7 @@ body {
     cursor: move;
     height: var(--MAPHEIGHT);
     width: var(--MAPWIDTH);
-    background-image: url(../images/mapBackground.png);
+    background-image: url(../images/Matapoperebackgrounds1.jpg);
     display: grid;
 }
 
