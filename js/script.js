@@ -28,6 +28,7 @@ window.onload = function () {
 	mapWidth = map.offsetWidth;
 	dragElement(map);
 	makeGrid();
+	makeMap();
 };
 
 setInterval(function checkKtkaBar () {
@@ -120,16 +121,19 @@ function addToCell (x, y, ...rest) {
 	for (let i = 0; i < rest.length; i++) {
 		let newElement = document.createElement(rest[i][0]);
 		cell.appendChild(newElement);
-		newElement.setAttribute(`${rest[i][1]}`, `${rest[i][2]}`);
-		styleElement.sheet.insertRule(`#map > div:nth-child(${cellIndex + 1}) ${rest[i][3]}`);
+		for (let i2 = 0; i2 < (rest[i][1].length); i2+=2) {
+			newElement.setAttribute(`${rest[i][1][i2]}`, `${rest[i][1][i2 + 1]}`);
+		}
+		styleElement.sheet.insertRule(`#map > div:nth-child(${cellIndex + 1}) ${rest[i][2]}`);
 	}
 }
 
 function makeMap () {
-	addToCell(1, 1, ["img", "src", "images/building1.png",
+	addToCell(1, 1, ["img", ["src", "images/building6.png", "id", "testImgId", "class", "building-image"],
 		`img {
-			height: 20px;
-			width: 20px;
+			height: 140px;
+			width: 140px;
+			margin: 5px;
 		}`]
 	);
 }
