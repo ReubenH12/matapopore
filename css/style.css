@@ -86,8 +86,6 @@ body {
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
-    
-
 }
 
 #menu-btn p {
@@ -106,6 +104,10 @@ body {
     height: calc(var(--HEIGHT) - 100px);
     background-color: #6085ab;
     border-radius: 20px;
+    background-image: url(../images/ktkabar.jpeg);
+    background-position-y: bottom;
+    background-size: 30px 10px;
+    background-repeat: no-repeat;
 }
 
 #ktka-bar #fill {
@@ -170,12 +172,6 @@ body {
 #map > div {
     border: 2px solid red;
 }
-
-/* #map > div > div {
-    width: 10px;
-    height: 10px;
-    background-color: red;
-} */
 
 .menu {
     visibility: hidden;

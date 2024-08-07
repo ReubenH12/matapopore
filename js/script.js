@@ -10,7 +10,8 @@ let pos1 = 0,
 	cursorX = 0,
 	cursorY = 0;
 
-let ktkaValue = 50;
+let ktkaValue = 0;
+let backgroundLvl = 1;
 
 let menuState = "";
 
@@ -31,15 +32,17 @@ window.onload = function () {
 	makeMap();
 };
 
+
 setInterval(function checkKtkaLevel () {
 	let ktkaBarFill = document.getElementById("fill");
-	if (ktkaBarFill.offsetHeight != ktkaValue) {
-		ktkaBarFill.style.height = ktkaValue + "px";
+	let ktkaBarValue = ktkaValue * 6;
+	if (ktkaBarFill.offsetHeight != ktkaBarValue) {
+		ktkaBarFill.style.height = ktkaBarValue + "px";
 	}
 
 	// let bgImage = map.style.backgroundImage;
-	let backgroundLvl = 1;
-	map.style.backgroundImage = `url('images/Matapoperebackground${backgroundLvl}.img')`;
+	backgroundLvl = Math.round(ktkaValue / 14) + 1;
+	map.style.backgroundImage = `url('images/Matapoperebackgrounds${backgroundLvl}.jpg')`;
 }, 100)
 
 function showMenu(menu) {
