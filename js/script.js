@@ -31,11 +31,15 @@ window.onload = function () {
 	makeMap();
 };
 
-setInterval(function checkKtkaBar () {
+setInterval(function checkKtkaLevel () {
 	let ktkaBarFill = document.getElementById("fill");
 	if (ktkaBarFill.offsetHeight != ktkaValue) {
 		ktkaBarFill.style.height = ktkaValue + "px";
 	}
+
+	// let bgImage = map.style.backgroundImage;
+	let backgroundLvl = 1;
+	map.style.backgroundImage = `url('images/Matapoperebackground${backgroundLvl}.img')`;
 }, 100)
 
 function showMenu(menu) {
