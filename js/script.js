@@ -4,6 +4,8 @@ let gameContainer,
 	gameWidth,
 	mapHeight,
 	mapWidth;
+	let moneyElement;
+
 
 let pos1 = 0,
 	pos2 = 0,
@@ -31,6 +33,8 @@ window.onload = function () {
 	gameWidth = gameContainer.offsetWidth;
 	mapHeight = map.offsetHeight;
 	mapWidth = map.offsetWidth;
+	moneyElement = document.getElementById("money-value");
+	
 	dragElement(map);
 	makeGrid();
 	makeMap();
@@ -47,7 +51,6 @@ setInterval(function checkLoop () {
 	backgroundLvl = Math.round(ktkaValue / 14) + 1;
 	map.style.backgroundImage = `url('images/Matapoperebackgrounds${backgroundLvl}.jpg')`;
 
-	let moneyElement = document.getElementById("money-value")
 	moneyElement.innerHTML = `$${money}`
 }, 100)
 
