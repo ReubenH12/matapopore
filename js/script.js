@@ -136,11 +136,165 @@ function addToCell (x, y, ...rest) {
 }
 
 function makeMap () {
-	addToCell(1, 1, ["img", ["src", "images/building6.png", "id", "testImgId", "class", "building-image"],
+	addToCell(1, 1, ["img", ["src", "images/building1.png", "id", "testImgId", "class", "building-image"],
+		`img {
+			height: 250px;
+			width: 250px;
+		}`]
+	);
+
+	addToCell(1, 6, ["img", ["src", "images/building6.png"],
+		`img {
+			height: 175px;
+			width: 175px;
+			margin-top: -200px;
+		}`]
+	);
+
+	addToCell(3, 6, ["img", ["src", "images/building6.png"],
+		`img {
+			height: 175px;
+			width: 175px;
+			margin-top: -200px;
+		}`]
+	);
+
+	addToCell(7, 6, ["img", ["src", "images/orangeTEMP.jpg"],
+		`img {
+			height: 300px;
+			width: 90px;
+			margin-top: 30px;
+		}`]
+	);
+
+	addToCell(1, 9, ["img", ["src", "images/building3.png"],
 		`img {
 			height: 140px;
 			width: 140px;
+			margin-top: -75px;
+		}`]
+	);
+
+	addToCell(8, 8, ["img", ["src", "images/building1.png"],
+		`img {
+			height: 200px;
+			width: 200px;
+			
+		}`]
+	);
+
+	addToCell(6, 2, ["img", ["src", "images/building2.png"],
+		`img {
+			height: 200px;
+			width: 20s0px;
+		}`]
+	);
+
+	addToCell(1, 3, ["div", ["id", "grassless"],
+		`#grassless{
+			height: 200px;
+			width: 200px;
+			background-color: green;
+		}`]
+	);
+
+	addToCell(8, 4, ["div", ["id", "tawasin"],
+		`#tawasin{
+			height: 140px;
+			width: 220px;
 			margin: 5px;
+			background-color: red;
+		}`]
+	);
+
+	addToCell(7, 4, ["img", ["src", "images/building2.png"],
+		`img:nth-child(1){
+			height: 75px;
+			width: 75px;
+		}`],
+
+		["img", ["src", "images/building2.png"],
+		`img:nth-child(2) {
+			height: 75px;
+			width: 75px;
+			margin: 5px;
+
+		}`]
+	);
+
+	addToCell(7, 0, ["img", ["src", "images/building2.png"],
+		`img:nth-child(1){
+			height: 75px;
+			width: 75px;
+		}`],
+
+		["img", ["src", "images/building2.png"],
+		`img:nth-child(2) {
+			height: 75px;
+			width: 75px;
+			margin: 5px;
+
+		}`]
+	);
+
+	addToCell(5, 1, ["img", ["src", "images/building2.png"],
+		`img:nth-child(1){
+			height: 75px;
+			width: 75px;
+		}`],
+
+		["img", ["src", "images/building2.png"],
+		`img:nth-child(2) {
+			height: 75px;
+			width: 75px;
+			margin: 5px;
+
+		}`]
+	);
+
+	addToCell(0, 1, ["img", ["src", "images/building2.png"],
+		`img:nth-child(1){
+			height: 75px;
+			width: 75px;
+		}`],
+
+		["img", ["src", "images/building2.png"],
+		`img:nth-child(2) {
+			height: 75px;
+			width: 75px;
+			margin: 5px;
+
+		}`]
+	);
+
+	addToCell(2, 0, ["img", ["src", "images/building2.png"],
+		`img:nth-child(1){
+			height: 75px;
+			width: 75px;
+		}`],
+
+		["img", ["src", "images/building2.png"],
+		`img:nth-child(2) {
+			height: 75px;
+			width: 75px;
+			margin: 5px;
+
+		}`]
+	);
+
+	addToCell(4, 3, ["img", ["src", "images/building2.png"],
+		`img:nth-child(1){
+			height: 75px;
+			width: 75px;
+		}`],
+
+		["img", ["src", "images/building2.png"],
+		`img:nth-child(2) {
+			height: 75px;
+			width: 75px;
+			margin: 5px;
+
 		}`]
 	);
 }
+
