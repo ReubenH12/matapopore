@@ -13,6 +13,10 @@ let pos1 = 0,
 let ktkaValue = 50;
 let backgroundLvl = 1;
 
+let money = 100;
+let moneyInterval = 1000;
+let moneyIncrement = 1;
+
 let menuState = "";
 
 const cellSize = 150;
@@ -32,7 +36,7 @@ window.onload = function () {
 	makeMap();
 };
 
-setInterval(function checkKtkaLevel () {
+setInterval(function checkLoop () {
 	let ktkaBarFill = document.getElementById("fill");
 	let ktkaBarValue = ktkaValue * 6;
 	if (ktkaBarFill.offsetHeight != ktkaBarValue) {
@@ -42,7 +46,14 @@ setInterval(function checkKtkaLevel () {
 	// let bgImage = map.style.backgroundImage;
 	backgroundLvl = Math.round(ktkaValue / 14) + 1;
 	map.style.backgroundImage = `url('images/Matapoperebackgrounds${backgroundLvl}.jpg')`;
+
+	let moneyElement = document.getElementById("money-value")
+	moneyElement.innerHTML = `$${money}`
 }, 100)
+
+setInterval(function giveMoney () {
+	money += moneyIncrement;
+}, moneyInterval)
 
 function showMenu(menu) {
 	let menuToShow = document.getElementById(menu);
