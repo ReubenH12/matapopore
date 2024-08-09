@@ -149,7 +149,19 @@ function addToCell (x, y, ...rest) {
 }
 
 function makeMap () {
-	addToCell(1, 1, ["img", ["src", "images/building1.png", "id", "testImgId", "class", "building-image"],
+
+	addToCell(3, 1, ["img", ["src", "images/upgradeSymbol.png", "class", "upgrade-symbol"],
+		`img {
+		height: 150px;
+		width: 150px;
+	}`]
+	);
+
+	for (let i = 0; i < document.querySelectorAll(".upgrade-symbol:hover").length; i++) {
+		document.querySelectorAll(".upgrade-symbol:hover")[i].style.transform = "translateY(10px)";
+	}
+
+	addToCell(1, 1, ["img", ["src", "images/building1.png"],
 		`img {
 			height: 250px;
 			width: 250px;
