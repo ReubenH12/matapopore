@@ -147,7 +147,7 @@ function addToCell (x, y, ...rest) {
 		styleElement.sheet.insertRule(`#map > div:nth-child(${cellIndex + 1}) ${rest[i][2]}`);
 	}
 }
-
+//Building placements
 function makeMap () {
 	addToCell(1, 1, ["img", ["src", "images/building1.png", "id", "testImgId", "class", "building-image"],
 		`img {
@@ -220,7 +220,7 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(7, 4, ["img", ["src", "images/building2.png"],
+	addToCell(7, 4, ["img", ["src", "images/building2.png", "id", "2buildings"],
 		`img:nth-child(1){
 			height: 75px;
 			width: 75px;
@@ -235,7 +235,7 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(7, 0, ["img", ["src", "images/building2.png"],
+	addToCell(7, 0, ["img", ["src", "images/building2.png", "id", "2buildings"],
 		`img:nth-child(1){
 			height: 75px;
 			width: 75px;
@@ -250,7 +250,7 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(5, 1, ["img", ["src", "images/building2.png"],
+	addToCell(5, 1, ["img", ["src", "images/building2.png", "id", "2buildings"],
 		`img:nth-child(1){
 			height: 75px;
 			width: 75px;
@@ -265,7 +265,7 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(0, 1, ["img", ["src", "images/building2.png"],
+	addToCell(0, 1, ["img", ["src", "images/building2.png", "id", "2buildings"],
 		`img:nth-child(1){
 			height: 75px;
 			width: 75px;
@@ -280,7 +280,49 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(2, 0, ["img", ["src", "images/building2.png"],
+	addToCell(2, 0, ["img", ["src", "images/building2.png", "id", "2buildings"],
+		`img:nth-child(1){
+			height: 75px;
+			width: 75px;
+		}`],
+
+		["img", ["src", "images/building2.png", ],
+		`img:nth-child(2) {
+			height: 75px;
+			width: 75px;
+			margin: 5px;
+
+		}`],
+
+		["img", ["src", "images/building2.png"],
+		`img:nth-child(3) {
+			height: 75px;
+			width: 75px;
+			margin: 15px;
+			margin-left: -200px;
+			margin-bottom: 50px;
+		}`]
+
+	);
+
+	addToCell(4, 3, ["img", ["src", "images/building2.png", "id", "2buildings"],
+		`img:nth-child(1){
+			height: 75px;
+			width: 75px;
+			
+		}`],
+
+		["img", ["src", "images/building2.png"],
+		`img:nth-child(2) {
+			height: 75px;
+			width: 75px;
+			margin: 30px;
+
+
+		}`]
+	);
+
+	addToCell(4, 8, ["img", ["src", "images/building2.png", "id", "2buildings"],
 		`img:nth-child(1){
 			height: 75px;
 			width: 75px;
@@ -290,12 +332,14 @@ function makeMap () {
 		`img:nth-child(2) {
 			height: 75px;
 			width: 75px;
-			margin: 5px;
+			margin: 15px;
 
 		}`]
+
+	
 	);
 
-	addToCell(4, 3, ["img", ["src", "images/building2.png"],
+	addToCell(5, 5, ["img", ["src", "images/building2.png", "id", "2buildings"],
 		`img:nth-child(1){
 			height: 75px;
 			width: 75px;
@@ -305,9 +349,198 @@ function makeMap () {
 		`img:nth-child(2) {
 			height: 75px;
 			width: 75px;
-			margin: 5px;
+			margin: 15px;
 
 		}`]
+
 	);
+
+	addToCell(6, 9, ["img", ["src", "images/building2.png", "id", "2buildings"],
+		`img:nth-child(1){
+			height: 75px;
+			width: 75px;
+		}`],
+
+		["img", ["src", "images/building2.png"],
+		`img:nth-child(2) {
+			height: 75px;
+			width: 75px;
+			margin: 15px;
+
+		}`]
+
+	);
+
+	addToCell(1, 4, ["img", ["src", "images/building2.png", "id", "2buildings"],
+		`img:nth-child(1){
+			height: 75px;
+			width: 75px;
+		}`],
+
+		["img", ["src", "images/building2.png"],
+		`img:nth-child(2) {
+			height: 75px;
+			width: 75px;
+			margin: 15px;
+		}`]
+
+	);
+
+	addToCell(2, 3, ["img", ["src", "images/building2.png", "id", "2buildings"],
+		`img:nth-child(1){
+			height: 75px;
+			width: 75px;
+			margin-left:68px;
+		}`],
+
+		["img", ["src", "images/building2.png"],
+		`img:nth-child(2) {
+			height: 75px;
+			width: 75px;
+			margin: 15px;
+			margin-left:155px;
+
+		}`]
+
+	);
+
+	addToCell(8, 2, ["img", ["src", "images/building2.png", "id", "2buildings"],
+		`img:nth-child(1){
+			height: 75px;
+			width: 75px;
+			margin-left:68px;
+		}`],
+
+		["img", ["src", "images/building2.png"],
+		`img:nth-child(2) {
+			height: 75px;
+			width: 75px;
+			margin: 15px;
+			margin-left:155px;
+
+		}`]
+
+	);
+
+	addToCell(2, 4, ["img", ["src", "images/building2.png", "id", "2buildings"],
+		`img:nth-child(1){
+			height: 75px;
+			width: 75px;
+			margin-left:68px;
+		}`],
+
+		["img", ["src", "images/building2.png"],
+		`img:nth-child(2) {
+			height: 75px;
+			width: 75px;
+			margin: 15px;
+			margin-left:155px;
+
+		}`]
+
+	);
+
+	
+	addToCell(3, 1, ["img", ["src", "images/building2.png", "id", "2buildings"],
+		`img:nth-child(1){
+			height: 75px;
+			width: 75px;
+			margin-left:68px;
+		}`],
+
+		["img", ["src", "images/building2.png"],
+		`img:nth-child(2) {
+			height: 75px;
+			width: 75px;
+			margin: 15px;
+			margin-left:155px;
+
+		}`]
+
+	);
+
+	addToCell(7, 5, ["img", ["src", "images/building2.png", "id", "2buildings"],
+		`img:nth-child(1){
+			height: 75px;
+			width: 75px;
+			margin-left:68px;
+		}`],
+
+		["img", ["src", "images/building2.png"],
+		`img:nth-child(2) {
+			height: 75px;
+			width: 75px;
+			margin: 15px;
+			margin-left:155px;
+
+		}`]
+
+	);
+
+	addToCell(3, 9, ["img", ["src", "images/building2.png", "id", "2buildings"],
+		`img:nth-child(1){
+			height: 75px;
+			width: 75px;
+			margin-left:68px;
+		}`],
+
+		["img", ["src", "images/building2.png"],
+		`img:nth-child(2) {
+			height: 75px;
+			width: 75px;
+			margin: 15px;
+			margin-left:155px;
+
+		}`]
+
+	);
+
+	addToCell(2, 8, ["img", ["src", "images/building2.png", "id", "2buildings"],
+		`img:nth-child(1){
+			height: 75px;
+			width: 75px;
+			margin-left:68px;
+		}`],
+
+		["img", ["src", "images/building2.png"],
+		`img:nth-child(2) {
+			height: 75px;
+			width: 75px;
+			margin: 15px;
+
+
+		}`]
+
+	);
+
+	addToCell(0, 9, ["img", ["src", "images/building2.png", "id", "2buildings"],
+		`img:nth-child(1){
+			height: 75px;
+			width: 75px;
+			margin-left:68px;
+		}`],
+
+		["img", ["src", "images/building2.png"],
+		`img:nth-child(2) {
+			height: 75px;
+			width: 75px;
+			margin: 15px;
+
+
+		}`]
+
+	);
+
+	addToCell(0, 7, ["img", ["src", "images/building2.png", "id", "2buildings"],
+		`img{
+			height: 75px;
+			width: 75px;
+			margin-left:68px;
+			margin-top:68px;
+		}`],
+		
+
+	);
+
 }
 
