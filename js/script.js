@@ -232,11 +232,11 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(1, 9, ["img", ["src", "images/building3.png"],
+	addToCell(1, 8, ["img", ["src", "images/ppap.png", "class", "building"],
 		`img.building {
-			height: 140px;
-			width: 140px;
-			margin-top: -75px;
+			height: 170px;
+			width: 170px;
+			margin-top: 20px;
 		}`]
 	);
 
