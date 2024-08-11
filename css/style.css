@@ -162,7 +162,7 @@ body {
 
 #map {
     position: absolute;
-    cursor: move;
+    /* cursor: move; */
     height: var(--MAPHEIGHT);
     width: var(--MAPWIDTH);
     background-image: url(../images/Matapoperebackgrounds1.jpg);
@@ -171,6 +171,11 @@ body {
 
 #map > div {
     border: 2px solid red;
+    pointer-events: none;
+}
+
+#map > div * {
+    pointer-events: initial;
 }
 
 .menu {
@@ -257,7 +262,19 @@ body {
 
 }
 
-#matapopereicon {
+#matapoporeicon {
     padding-left: 100px;
 
 }
+
+.upgrade-symbol {
+    height: 70px;
+	width: 70px;
+    position: absolute;
+    pointer-events: none;
+    /* transition-duration: 50ms; */
+}
+
+/* .upgrade-symbol:hover {
+    translate: 0 -4px;
+} */

@@ -21,6 +21,9 @@ let moneyIncrement = 1;
 
 let menuState = "";
 
+let upSymOn = false;
+let symbolHovered = false;
+
 const cellSize = 150;
 
 const styleElement = document.createElement("style");
@@ -135,41 +138,78 @@ function makeGrid () {
 	}
 }
 
+function showUpgradeSymbol (element) {
+	console.log(`Shown upgrade symbol ${element}`);
+	let newSymbol = document.createElement("img");
+	element.parentElement.appendChild(newSymbol);
+
+	newSymbol.setAttribute("src", "images/upgradeSymbol.png");
+	newSymbol.setAttribute("class", "upgrade-symbol");
+
+	let elmntTop = element.offsetTop;
+	let elmntLeft = element.offsetLeft;
+	// let elmntHeight = element.offsetHeight;
+	// let elmntWidth = element.offsetWidth;
+	newSymbol.style.top = `${elmntTop}px`;
+	newSymbol.style.left = `${elmntLeft}px`;
+
+	newSymbol.addEventListener('mouseout', (event) => {
+		console.log(`mouseout on newSymbol with event ${event}`)
+		if (!element.contains(event.relatedTarget)) {
+			console.log(`element (${element}) does not contain ${event.relatedTarget}`);
+			element.parentElement.querySelector(".upgrade-symbol").remove();
+			console.log(`${element.parentElement.querySelector(".upgrade-symbol")} was removed`);
+		}
+	});
+	}
+
+function hideUpgradeSymbol (element, event) {
+	console.log(`Attempted Hidden upgrade symbol with ${element} and ${event}`);
+	let newSymbol = element.parentElement.querySelector(".upgrade-symbol");
+	if (!newSymbol.contains(event.relatedTarget)) {
+		console.log(`newSymbol (${element}) does not contain ${event.relatedTarget}`);
+		element.parentElement.querySelector(".upgrade-symbol").remove();
+		console.log(`${element.parentElement.querySelector(".upgrade-symbol")} was removed`);
+	} else {
+		console.log(`newSymbol (${element}) DOES contain ${event.relatedTarget}`);
+	}
+}
+
 function addToCell (x, y, ...rest) {
 	let cellIndex = x + y * 10;
 	let cell = document.querySelector(`#map > div:nth-child(${cellIndex + 1})`);
 	for (let i = 0; i < rest.length; i++) {
 		let newElement = document.createElement(rest[i][0]);
 		cell.appendChild(newElement);
-		for (let i2 = 0; i2 < (rest[i][1].length); i2+=2) {
+		for (let i2 = 0; i2 < rest[i][1].length; i2 += 2) {
 			newElement.setAttribute(`${rest[i][1][i2]}`, `${rest[i][1][i2 + 1]}`);
 		}
 		styleElement.sheet.insertRule(`#map > div:nth-child(${cellIndex + 1}) ${rest[i][2]}`);
-	}
+		newElement.addEventListener('mouseover', function(){showUpgradeSymbol(newElement);});
+		newElement.addEventListener('mouseout', (event) => {
+			hideUpgradeSymbol(newElement, event);
+        });
+    }
 }
-//Building placements
+
+
 function makeMap () {
 
-	addToCell(3, 1, ["img", ["src", "images/upgradeSymbol.png", "class", "upgrade-symbol"],
+	addToCell(3, 2, ["img", ["src", "images/upgradeSymbol.png", "class", "upgrade-symbol"],
 		`img {
-		height: 150px;
-		width: 150px;
+		margin: 0;
 	}`]
 	);
 
-	for (let i = 0; i < document.querySelectorAll(".upgrade-symbol:hover").length; i++) {
-		document.querySelectorAll(".upgrade-symbol:hover")[i].style.transform = "translateY(10px)";
-	}
-
-	addToCell(1, 1, ["img", ["src", "images/building1.png"],
-		`img {
+	addToCell(1, 1, ["img", ["src", "images/building1.png", "class", "building"],
+		`img.building {
 			height: 250px;
 			width: 250px;
 		}`]
 	);
 
 	addToCell(1, 6, ["img", ["src", "images/building6.png"],
-		`img {
+		`img.building {
 			height: 175px;
 			width: 175px;
 			margin-top: -200px;
@@ -177,15 +217,15 @@ function makeMap () {
 	);
 
 	addToCell(3, 6, ["img", ["src", "images/building6.png"],
-		`img {
+		`img.building {
 			height: 175px;
 			width: 175px;
 			margin-top: -200px;
 		}`]
 	);
 
-	addToCell(7, 6, ["img", ["src", "images/orangeTEMP.jpg"],
-		`img {
+	addToCell(7, 6, ["img", ["src", "images/orangeTEMP.jpg", "id", "bridge"],
+		`img.building {
 			height: 300px;
 			width: 90px;
 			margin-top: 30px;
@@ -193,7 +233,7 @@ function makeMap () {
 	);
 
 	addToCell(1, 9, ["img", ["src", "images/building3.png"],
-		`img {
+		`img.building {
 			height: 140px;
 			width: 140px;
 			margin-top: -75px;
@@ -201,7 +241,7 @@ function makeMap () {
 	);
 
 	addToCell(8, 8, ["img", ["src", "images/building1.png"],
-		`img {
+		`img.building {
 			height: 200px;
 			width: 200px;
 			
@@ -209,7 +249,7 @@ function makeMap () {
 	);
 
 	addToCell(6, 2, ["img", ["src", "images/building2.png"],
-		`img {
+		`img.building {
 			height: 200px;
 			width: 20s0px;
 		}`]
@@ -232,14 +272,14 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(7, 4, ["img", ["src", "images/building2.png", "id", "2buildings"],
-		`img:nth-child(1){
+	addToCell(7, 4, ["img", ["src", "images/building2.png"],
+		`img:nth-child(1) {
 			height: 75px;
 			width: 75px;
 		}`],
 
 		["img", ["src", "images/building2.png"],
-		`img:nth-child(2) {
+		`img:nth-child(2){
 			height: 75px;
 			width: 75px;
 			margin: 5px;
@@ -247,7 +287,7 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(7, 0, ["img", ["src", "images/building2.png", "id", "2buildings"],
+	addToCell(7, 0, ["img", ["src", "images/building2.png", "id"],
 		`img:nth-child(1){
 			height: 75px;
 			width: 75px;
@@ -453,7 +493,7 @@ function makeMap () {
 	);
 
 	
-	addToCell(3, 1, ["img", ["src", "images/building2.png", "id", "2buildings"],
+	addToCell(3, 1, ["img", ["src", "images/building2.png"],
 		`img:nth-child(1){
 			height: 75px;
 			width: 75px;
@@ -471,7 +511,7 @@ function makeMap () {
 
 	);
 
-	addToCell(7, 5, ["img", ["src", "images/building2.png", "id", "2buildings"],
+	addToCell(7, 5, ["img", ["src", "images/building2.png"],
 		`img:nth-child(1){
 			height: 75px;
 			width: 75px;
@@ -489,7 +529,7 @@ function makeMap () {
 
 	);
 
-	addToCell(3, 9, ["img", ["src", "images/building2.png", "id", "2buildings"],
+	addToCell(3, 9, ["img", ["src", "images/building2.png"],
 		`img:nth-child(1){
 			height: 75px;
 			width: 75px;
@@ -507,7 +547,7 @@ function makeMap () {
 
 	);
 
-	addToCell(2, 8, ["img", ["src", "images/building2.png", "id", "2buildings"],
+	addToCell(2, 8, ["img", ["src", "images/building2.png"],
 		`img:nth-child(1){
 			height: 75px;
 			width: 75px;
@@ -525,7 +565,7 @@ function makeMap () {
 
 	);
 
-	addToCell(0, 9, ["img", ["src", "images/building2.png", "id", "2buildings"],
+	addToCell(0, 9, ["img", ["src", "images/building2.png"],
 		`img:nth-child(1){
 			height: 75px;
 			width: 75px;
@@ -543,7 +583,7 @@ function makeMap () {
 
 	);
 
-	addToCell(0, 7, ["img", ["src", "images/building2.png", "id", "2buildings"],
+	addToCell(0, 7, ["img", ["src", "images/building2.png"],
 		`img{
 			height: 75px;
 			width: 75px;
