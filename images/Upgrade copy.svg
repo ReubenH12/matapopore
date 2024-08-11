@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 500 500">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-width: 6px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke: #231f20;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1, .cls-3 {
+        fill: #4a55a5;
+      }
+
+      .cls-2 {
+        fill: #26a0da;
+        stroke-width: 4px;
+      }
+
+      .cls-3 {
+        stroke-width: 9px;
+      }
+    </style>
+  </defs>
+  <!-- Generator: Adobe Illustrator 28.6.0, SVG Export Plug-In . SVG Version: 1.2.0 Build 709)  -->
+  <g>
+    <g id="Layer_1">
+      <circle class="cls-1" cx="250" cy="250" r="222.62"/>
+      <path class="cls-3" d="M238.13,76.76"/>
+      <polyline class="cls-2" points="237.13 56.97 406.92 226.38 305.26 228.46 315.3 429.67 194.93 428.95 189.69 230.98 89.84 231.57 242.32 57"/>
+    </g>
+  </g>
+</svg>
