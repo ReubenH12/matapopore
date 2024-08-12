@@ -171,11 +171,18 @@ body {
 
 #map > div {
     border: 2px solid red;
+    /* z-index: 0; */
     pointer-events: none;
 }
 
-#map > div * {
+/* #map > div * {
     pointer-events: initial;
+    z-index: 800;
+}  */
+
+#map > div .building {
+    pointer-events: auto;
+    /* z-index: 5; */
 }
 
 .menu {
@@ -212,19 +219,6 @@ body {
 .blurred {
     filter: blur(4px);
     transition-duration: 100ms;
-}
-
-.building {
-    position: absolute;
-    top: 50px;
-    left: 200px;
-    text-align: center;
-    padding-top: 30px;
-}
-
-.building img {
-    height: 100px;
-    width: 100px;
 }
 
 .menu #button-container {
@@ -268,8 +262,8 @@ body {
 }
 
 .upgrade-symbol {
-    height: 70px;
-	width: 70px;
+    height: 30px;
+	width: 30px;
     position: absolute;
     pointer-events: none;
     /* transition-duration: 50ms; */
