@@ -211,16 +211,16 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(7, 6, ["img", ["src", "images/orangeTEMP.jpg", "id", "bridge"],
-		`img.building {
+	addToCell(7, 6, ["img", ["src", "images/bridge.png"],
+		`img {
 			height: 300px;
-			width: 90px;
+			width: 150px;
 			margin-top: 30px;
 		}`]
 	);
 
-	addToCell(1, 8, ["img", ["src", "images/ppap.png", "class", "building"],
-		`img.building {
+	addToCell(1, 8, ["img", ["src", "images/ppap.png"],
+		`img {
 			height: 170px;
 			width: 170px;
 			margin-top: 20px;
@@ -250,12 +250,12 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(8, 4, ["div", ["id", "tawasin"],
-		`#tawasin{
-			height: 140px;
+	addToCell(8, 4, ["img", ["src", "images/tawa.png"],
+		`img{
+			height: 130px;
 			width: 220px;
 			margin: 5px;
-			background-color: red;
+			
 		}`]
 	);
 
