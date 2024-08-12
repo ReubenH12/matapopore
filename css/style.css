@@ -235,6 +235,14 @@ body {
     height: 150px;
     background: #73AD21;
     margin: 10px;
+    transition: 0.3s;
+}
+
+.menu .button-box:hover {
+
+    background-color: #3e8e41;
+    color: white;
+
 }
 
 .menu .button-box > p {
@@ -272,3 +280,11 @@ body {
 /* .upgrade-symbol:hover {
     translate: 0 -4px;
 } */
+
+
+.creditxt {
+    position: absolute;
+    height: 120px;
+    top: 70px;
+    left: 20px;
+}
