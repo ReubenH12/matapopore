@@ -151,40 +151,24 @@ function upgrade (building) {
 }
 
 function showUpgradeSymbol (element) {
-	console.log(`Shown upgrade symbol ${element}`);
 	let newSymbol = document.createElement("img");
 	element.parentElement.appendChild(newSymbol);
 
-	newSymbol.setAttribute("src", "images/upgradeSymbol.png");
+	newSymbol.setAttribute("src", "images/upgradeSymbol.svg");
 	newSymbol.setAttribute("class", "upgrade-symbol");
 
 	let elmntTop = element.offsetTop;
 	let elmntLeft = element.offsetLeft;
 	let elmntHeight = element.offsetHeight;
 	let elmntWidth = element.offsetWidth;
-	newSymbol.style.top = `${elmntTop + elmntHeight / 2 - 30 / 2}px`;
-	newSymbol.style.left = `${elmntLeft + elmntWidth / 2 - 30 / 2}px`;
+	newSymbol.style.top = `${elmntTop + elmntHeight / 2 - 50 / 2}px`;
+	newSymbol.style.left = `${elmntLeft + elmntWidth / 2 - 50 / 2}px`;
 
-	// newSymbol.addEventListener('mouseout', (event) => {
-	// 	console.log(`mouseout on newSymbol with event ${event}`)
-	// 	if (!element.contains(event.relatedTarget)) {
-	// 		console.log(`element (${element}) does not contain ${event.relatedTarget}`);
-	// 		element.parentElement.querySelector(".upgrade-symbol").remove();
-	// 		console.log(`${element.parentElement.querySelector(".upgrade-symbol")} was removed`);
-	// 	}
-	// });
 	}
 
 function hideUpgradeSymbol (element, event) {
-	// console.log(`Attempted Hidden upgrade symbol with ${element} and ${event}`);
 	let newSymbol = element.parentElement.querySelector(".upgrade-symbol");
-	// if (!newSymbol.contains(event.relatedTarget)) {
-	// 	console.log(`newSymbol (${element}) does not contain ${event.relatedTarget}`);
-		newSymbol.remove();
-	// 	console.log(`${element.parentElement.querySelector(".upgrade-symbol")} was removed`);
-	// } else {
-	// 	console.log(`newSymbol (${element}) DOES contain ${event.relatedTarget}`);
-	// }
+	newSymbol.remove();
 }
 
 function addToCell (x, y, ...rest) {
@@ -199,9 +183,6 @@ function addToCell (x, y, ...rest) {
 		styleElement.sheet.insertRule(`#map > div:nth-child(${cellIndex + 1}) ${rest[i][2]}`);
 		newElement.addEventListener("mouseover", function(){showUpgradeSymbol(newElement);});
 		newElement.addEventListener("mouseout", function(){hideUpgradeSymbol(newElement);})
-		// newElement.addEventListener('mouseout', (event) => {
-		// 	hideUpgradeSymbol(newElement, event);
-        // });
     }
 }
 

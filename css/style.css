@@ -262,8 +262,8 @@ body {
 }
 
 .upgrade-symbol {
-    height: 30px;
-	width: 30px;
+    height: 50px;
+	width: 50px;
     position: absolute;
     pointer-events: none;
     /* transition-duration: 50ms; */
