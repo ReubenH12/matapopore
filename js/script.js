@@ -12,7 +12,7 @@ let pos1 = 0,
 	cursorX = 0,
 	cursorY = 0;
 
-let ktkaValue = 50;
+let ktkaValue = 6;
 let backgroundLvl = 1;
 
 let money = 100;
@@ -37,7 +37,7 @@ window.onload = function () {
 	mapHeight = map.offsetHeight;
 	mapWidth = map.offsetWidth;
 	moneyElement = document.getElementById("money-value");
-	
+
 	dragElement(map);
 	makeGrid();
 	makeMap();
@@ -47,12 +47,25 @@ window.onload = function () {
 setInterval(function checkLoop () {
 	let ktkaBarFill = document.getElementById("fill");
 	let ktkaBarValue = ktkaValue * 6;
+	let maxBarValue = gameHeight - 100;
+	if (ktkaBarValue < 5) {
+		ktkaBarValue = 5;
+	}
+	if (ktkaBarValue > maxBarValue) {
+		ktkaBarValue = maxBarValue;
+	}
+
 	if (ktkaBarFill.offsetHeight != ktkaBarValue) {
 		ktkaBarFill.style.height = ktkaBarValue + "px";
 	}
 
-	// let bgImage = map.style.backgroundImage;
-	backgroundLvl = Math.round(ktkaValue / 14) + 1;
+	backgroundLvl = Math.round(ktkaValue / 14);
+	if (backgroundLvl < 1) {
+		backgroundLvl = 1;
+	}
+	if (backgroundLvl > 7) {
+		backgroundLvl = 7;
+	}
 	map.style.backgroundImage = `url('images/Matapoperebackgrounds${backgroundLvl}.jpg')`;
 
 	moneyElement.innerHTML = `$${money}`
