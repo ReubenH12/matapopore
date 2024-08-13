@@ -235,10 +235,23 @@ body {
     height: 150px;
     background: #73AD21;
     margin: 10px;
+    transition: 0.3s;
 }
 
 .menu .button-box > p {
     margin: 20px;
+}
+
+.menu .button-box:hover{
+    background-color: #3e8e41;
+    color: white;
+}
+
+.menucontainer {
+    margin-top: 100px;
+    margin-left: 20px;
+
+
 }
 
 #menutext {
