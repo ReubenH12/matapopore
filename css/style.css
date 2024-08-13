@@ -165,7 +165,7 @@ body {
     /* cursor: move; */
     height: var(--MAPHEIGHT);
     width: var(--MAPWIDTH);
-    background-image: url(../images/Matapoperebackgrounds1.jpg);
+    background-image: url(../images/background1.jpg);
     display: grid;
 }
 
