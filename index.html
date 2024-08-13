@@ -79,10 +79,9 @@
                     <div class="close" onclick="showMenu('home')">X</div>
                     <h1 id="menuheader">Home Menu</h1>
                     <div id="button-container">
-                        <div id="settings-btn" class="button-box"><p id="menutext">Settings</p></div>
-                        <div id="credits-btn" class="button-box"><p id="menutext">Credits</p></div>
-                        <div id="tutorial-btn" class="button-box"><p id="menutext">Tutorial</p></div>
-                        <div id="reset-btn" class="button-box"><p id="menutext">Reset stats</p></div>
+                        <div id="settings-btn" class="button-box" onclick="showMenu('home'); showMenu('settings')"><p id="menutext">Settings</p></div>
+                        <div id="credits-btn" class="button-box" onclick="showMenu('home'); showMenu('credits')"><p id="menutext">Credits</p></div>
+                        <div id="reset-btn" class="button-box" onClick="window.location.reload();" ><p id="menutext">Reset stats</p></div>
                             <svg id="matapoporeicon" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                     width="330px" height="330px" viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve">
                                 <polygon fill="#008D36" points="414.244,254.037 457.413,338.672 459.396,353.283 452.858,369.521 439.225,377.154 417.161,378.184 
@@ -155,11 +154,49 @@
                             </svg>
                     </div>
                 </div>
-                <div id="build" class="menu">
-                    <div class="close" onclick="showMenu('build')">X</div>
+                <div id="credits" class="menu">
+                    <div class="close" onclick="showMenu('credits')">X</div>
+                    <h1 id="menuheader">Credits</h1>
+                    <div class="menucontainer">
+                    <p>
+                        
+                    Reuben Humphrey - Most of the game
+                    <br>
+                    Gabriel Garcia - Enough of the game to make it look like he did most of the game
+                    <br> 
+                    Isabelle Keenan - Created the sprites for the game (none of us know art)
+                    <br><br>
+                    Special Thanks to:
+                    <br>
+                    Jethro Betita
+                    <br>
+                    Felix Nelson
+                    <br>
+                    Jedd Rix
+                    <br>
+                    Ms Nicholas
+                    <br>
+                    Ms stevens
+                    <br>
+                    Angela Humphrey
+                    <br>
+                    Phonam Gatela
+                    <br>
+                    Rhys Kohiti
+
+                    </p>
+                    </div>
+                    <div onclick="showMenu('credits'); showMenu('home')"><p>Back</p></div>
+                </div>
+                <div id="settings" class="menu">
+                    <div class="close" onclick="showMenu('settings')">X</div>
                     <h1 id="menuheader">Settings</h1>
-                        <button type="button" onclick="alert('Hello world!')"><p>Enable background music</p></button>
-                        <button type="button" onclick="alert('Hello world!')"><p>Change background colour</p></button>
+                    <div class="menucontainer">
+
+
+
+
+                    </div>
                 </div>
             </div>
         </main>
