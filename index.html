@@ -6,8 +6,8 @@
         <meta name="keywords" content="html5">
         <meta name="author" content="Reuben Humphrey and Gabriel Garcia">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="images/EarthFavicon.png">
-        <link rel="icon" href="images/EarthFavicon.svg">
+        <link rel="icon" href="images/logo.png">
+        <link rel="icon" href="images/logo.svg">
         <link rel="stylesheet" href="css/style.css">
         <script src="js/script.js"></script>
     </head>
@@ -22,7 +22,7 @@
             <div id="shadow-box" onclick="showMenu()"></div>
             <div id="ui">
                 <div id="menu-btn" class="ui-element" onclick="showMenu('home')">
-                    <svg id="menuicon" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    <svg id="menu-icon" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                     width="40px" height="40px" viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve">
                 <g>
                     <rect x="21.329" y="347.84" width="457.343" height="61.679"/>
@@ -77,12 +77,12 @@
                 </div>
                 <div id="home" class="menu">
                     <div class="close" onclick="showMenu('home')">X</div>
-                    <h1 id="menuheader">Home Menu</h1>
+                    <h1 id="menu-header">Home Menu</h1>
                     <div id="button-container">
-                        <div id="settings-btn" class="button-box"><p id="menutext">Settings</p></div>
-                        <div id="credits-btn" class="button-box" onclick="showMenu('home'); showMenu('credits')"><p id="menutext">Credits</p></div>
-                        <div id="reset-btn" class="button-box"><p id="menutext">Reset stats</p></div>
-                            <svg id="matapoporeicon" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                        <div id="settings-btn" class="button-box" onclick="showMenu('home'); showMenu('settings')"><p id="menu-text">Settings</p></div>
+                        <div id="credits-btn" class="button-box" onclick="showMenu('home'); showMenu('credits')"><p id="menu-text">Credits</p></div>
+                        <div id="reset-btn" class="button-box" onClick="window.location.reload();" ><p id="menu-text">Reset stats</p></div>
+                            <svg id="matapopore-icon" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                     width="330px" height="330px" viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve">
                                 <polygon fill="#008D36" points="414.244,254.037 457.413,338.672 459.396,353.283 452.858,369.521 439.225,377.154 417.161,378.184 
                                     382.722,378.453 377.074,377.355 334.455,301.219 "/>
@@ -154,30 +154,44 @@
                             </svg>
                     </div>
                 </div>
-
                 <div id="credits" class="menu">
                     <div class="close" onclick="showMenu('credits')">X</div>
-                    <h1 id="menuheader">Credits</h1>
-                    <div class="creditxt">
-                        <p>Reuben Humphrey - Most of the game<br> 
-                        Gabriel Garcia - Enough of the game to make it look like he did most of the game<br>
-                        Isabelle Keenan - Sprite Art for the game<br>
+                    <h1 id="menu-header">Credits</h1>
+                    <div class="menu-container">
+                        <p>
+                        Reuben Humphrey - Most of the game
                         <br>
-                        Special thanks
+                        Gabriel Garcia - Enough of the game to make it look like he did most of the game
+                        <br> 
+                        Isabelle Keenan - Created the sprites for the game (none of us know art)
+                        <br><br>
+                        Special Thanks to:
                         <br>
-                        Jethro Betita<br>
-                        Jedd Rix<br>
-                        Felix Nelson<br>
-                        Ms Van Endt<br> 
-                        Ms Nicholas<br>
-                        Ms Stevens<br>
-                        Robbie Keane<br>
-                        Phonam Gatela<br>
-                        Angela Humphrey<br>
-                        Mr savage<br>
-                        
-                </p></div>
+                        Jethro Betita
+                        <br>
+                        Felix Nelson
+                        <br>
+                        Jedd Rix
+                        <br>
+                        Ms Nicholas
+                        <br>
+                        Ms stevens
+                        <br>
+                        Angela Humphrey
+                        <br>
+                        Phonam Gatela
+                        <br>
+                        Rhys Kohiti
+                        </p>
+                    </div>
+                    <div onclick="showMenu('credits'); showMenu('home')">Back</div>
                 </div>
+                <!-- <div id="settings" class="menu">
+                    <div class="close" onclick="showMenu('settings')">X</div>
+                    <h1 id="menu-header">Settings</h1>
+                    <div class="menu-container">
+                    </div>
+                </div> -->
             </div>
         </main>
     </body>

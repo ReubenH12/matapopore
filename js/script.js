@@ -12,12 +12,12 @@ let pos1 = 0,
 	cursorX = 0,
 	cursorY = 0;
 
-let ktkaValue = 50;
+let ktkaValue = 6;
 let backgroundLvl = 1;
 
 let money = 100;
-let moneyInterval = 1000;
-let moneyIncrement = 1;
+let moneyInterval = 100;
+let moneyIncrement = 5;
 
 let menuState = "";
 
@@ -37,7 +37,7 @@ window.onload = function () {
 	mapHeight = map.offsetHeight;
 	mapWidth = map.offsetWidth;
 	moneyElement = document.getElementById("money-value");
-	
+
 	dragElement(map);
 	makeGrid();
 	makeMap();
@@ -47,13 +47,26 @@ window.onload = function () {
 setInterval(function checkLoop () {
 	let ktkaBarFill = document.getElementById("fill");
 	let ktkaBarValue = ktkaValue * 6;
+	let maxBarValue = gameHeight - 100;
+	if (ktkaBarValue < 5) {
+		ktkaBarValue = 5;
+	}
+	if (ktkaBarValue > maxBarValue) {
+		ktkaBarValue = maxBarValue;
+	}
+
 	if (ktkaBarFill.offsetHeight != ktkaBarValue) {
 		ktkaBarFill.style.height = ktkaBarValue + "px";
 	}
 
-	// let bgImage = map.style.backgroundImage;
-	backgroundLvl = Math.round(ktkaValue / 14) + 1;
-	map.style.backgroundImage = `url('images/Matapoperebackgrounds${backgroundLvl}.jpg')`;
+	backgroundLvl = Math.round(ktkaValue / 14);
+	if (backgroundLvl < 1) {
+		backgroundLvl = 1;
+	}
+	if (backgroundLvl > 7) {
+		backgroundLvl = 7;
+	}
+	map.style.backgroundImage = `url('images/background${backgroundLvl}.jpg')`;
 
 	moneyElement.innerHTML = `$${money}`
 }, 100)
@@ -63,6 +76,7 @@ setInterval(function giveMoney () {
 }, moneyInterval)
 
 function showMenu(menu) {
+	console.log("shown menu")
 	let menuToShow = document.getElementById(menu);
 	let currentMenu = document.getElementById(menuState);
 	let uiElements = document.querySelectorAll(".ui-element");
@@ -142,12 +156,27 @@ function makeGrid () {
 function addUpgradeables () {
 	let upgradeables = document.getElementsByClassName("building");
 	for (let i = 0; i < upgradeables.length; i++) {
-		upgradeables[i].addEventListener("click", function(){upgrade(i)});
+		upgradeables[i].addEventListener("click", function(){upgrade(upgradeables[i])});
 	}
 }
 
 function upgrade (building) {
-	ktkaValue += 5;
+	if (building.classList.contains("house")) {
+		if (money >= 50) {
+			money -= 50;
+			console.log("Upgraded house!")
+			ktkaValue += 1;
+			moneyIncrement += 10;
+		}
+	}
+	if (building.classList.contains("wastewater") ) {
+		if (money > 200) {
+			money -= 200;
+			console.log("Upgraded treatment plant!")
+			ktkaValue += 10;
+			money += 100;
+		}
+	}
 }
 
 function showUpgradeSymbol (element) {
@@ -219,7 +248,7 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(1, 8, ["img", ["src", "images/ppap.png"],
+	addToCell(1, 8, ["img", ["src", "images/pinkPineapple.png"],
 		`img {
 			height: 170px;
 			width: 170px;
@@ -235,23 +264,23 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(6, 2, ["img", ["src", "images/building2.png", "class", "building"],
+	addToCell(6, 2, ["img", ["src", "images/building2.png", "class", "building house"],
 		`img.building {
 			height: 200px;
 			width: 20s0px;
 		}`]
 	);
 
-	addToCell(1, 3, ["div", ["id", "grassless"],
-		`#grassless{
+	addToCell(1, 3, ["div", ["id", "grasslees"],
+		`#grasslees {
 			height: 200px;
 			width: 200px;
 			background-color: green;
 		}`]
 	);
 
-	addToCell(8, 4, ["img", ["src", "images/tawa.png"],
-		`img{
+	addToCell(8, 4, ["img", ["src", "images/tawaSign.png"],
+		`img {
 			height: 130px;
 			width: 220px;
 			margin: 5px;
@@ -259,27 +288,13 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(7, 4, ["img", ["src", "images/building2.png", "class", "building"],
+	addToCell(7, 4, ["img", ["src", "images/building2.png", "class", "building house"],
 		`img:nth-child(1) {
 			height: 75px;
 			width: 75px;
 		}`],
 
-		["img", ["src", "images/building2.png", "class", "building"],
-		`img:nth-child(2){
-			height: 75px;
-			width: 75px;
-			margin: 5px;
-		}`]
-	);
-
-	addToCell(7, 0, ["img", ["src", "images/building2.png", "class", "building"],
-		`img:nth-child(1){
-			height: 75px;
-			width: 75px;
-		}`],
-
-		["img", ["src", "images/building2.png", "class", "building"],
+		["img", ["src", "images/building2.png", "class", "building house"],
 		`img:nth-child(2) {
 			height: 75px;
 			width: 75px;
@@ -287,13 +302,13 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(5, 1, ["img", ["src", "images/building2.png", "class", "building"],
-		`img:nth-child(1){
+	addToCell(7, 0, ["img", ["src", "images/building2.png", "class", "building house"],
+		`img:nth-child(1) {
 			height: 75px;
 			width: 75px;
 		}`],
 
-		["img", ["src", "images/building2.png", "class", "building"],
+		["img", ["src", "images/building2.png", "class", "building house"],
 		`img:nth-child(2) {
 			height: 75px;
 			width: 75px;
@@ -301,13 +316,27 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(0, 1, ["img", ["src", "images/building2.png", "class", "building"],
-		`img:nth-child(1){
+	addToCell(5, 1, ["img", ["src", "images/building2.png", "class", "building house"],
+		`img:nth-child(1) {
 			height: 75px;
 			width: 75px;
 		}`],
 
-		["img", ["src", "images/building2.png", "class", "building"],
+		["img", ["src", "images/building2.png", "class", "building house"],
+		`img:nth-child(2) {
+			height: 75px;
+			width: 75px;
+			margin: 5px;
+		}`]
+	);
+
+	addToCell(0, 1, ["img", ["src", "images/building2.png", "class", "building house"],
+		`img:nth-child(1) {
+			height: 75px;
+			width: 75px;
+		}`],
+
+		["img", ["src", "images/building2.png", "class", "building house"],
 		`img:nth-child(2) {
 			height: 75px;
 			width: 75px;
@@ -315,20 +344,20 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(2, 0, ["img", ["src", "images/building2.png", "class", "building upgradeable"],
-		`img:nth-child(1){
+	addToCell(2, 0, ["img", ["src", "images/building2.png", "class", "building house"],
+		`img:nth-child(1) {
 			height: 75px;
 			width: 75px;
 		}`],
 
-		["img", ["src", "images/building2.png", "class", "building"],
+		["img", ["src", "images/building2.png", "class", "building house"],
 		`img:nth-child(2) {
 			height: 75px;
 			width: 75px;
 			margin: 5px;
 		}`],
 
-		["img", ["src", "images/building2.png", "class", "building"],
+		["img", ["src", "images/building2.png", "class", "building house"],
 		`img:nth-child(3) {
 			height: 75px;
 			width: 75px;
@@ -338,14 +367,14 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(4, 3, ["img", ["src", "images/building2.png", "class", "building"],
-		`img:nth-child(1){
+	addToCell(4, 3, ["img", ["src", "images/building2.png", "class", "building house"],
+		`img:nth-child(1) {
 			height: 75px;
 			width: 75px;
 			
 		}`],
 
-		["img", ["src", "images/building2.png", "class", "building"],
+		["img", ["src", "images/building2.png", "class", "building house"],
 		`img:nth-child(2) {
 			height: 75px;
 			width: 75px;
@@ -353,13 +382,13 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(4, 8, ["img", ["src", "images/building2.png", "class", "building"],
-		`img:nth-child(1){
+	addToCell(4, 8, ["img", ["src", "images/building2.png", "class", "building house"],
+		`img:nth-child(1) {
 			height: 75px;
 			width: 75px;
 		}`],
 
-		["img", ["src", "images/building2.png", "class", "building"],
+		["img", ["src", "images/building2.png", "class", "building house"],
 		`img:nth-child(2) {
 			height: 75px;
 			width: 75px;
@@ -367,13 +396,13 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(5, 5, ["img", ["src", "images/building2.png", "class", "building"],
-		`img:nth-child(1){
+	addToCell(5, 5, ["img", ["src", "images/building2.png", "class", "building house"],
+		`img:nth-child(1) {
 			height: 75px;
 			width: 75px;
 		}`],
 
-		["img", ["src", "images/building2.png", "class", "building"],
+		["img", ["src", "images/building2.png", "class", "building house"],
 		`img:nth-child(2) {
 			height: 75px;
 			width: 75px;
@@ -381,13 +410,13 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(6, 9, ["img", ["src", "images/building2.png", "class", "building"],
-		`img:nth-child(1){
+	addToCell(6, 9, ["img", ["src", "images/building2.png", "class", "building house"],
+		`img:nth-child(1) {
 			height: 75px;
 			width: 75px;
 		}`],
 
-		["img", ["src", "images/building2.png", "class", "building"],
+		["img", ["src", "images/building2.png", "class", "building house"],
 		`img:nth-child(2) {
 			height: 75px;
 			width: 75px;
@@ -395,13 +424,13 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(1, 4, ["img", ["src", "images/building2.png", "class", "building"],
-		`img:nth-child(1){
+	addToCell(1, 4, ["img", ["src", "images/building2.png", "class", "building house"],
+		`img:nth-child(1) {
 			height: 75px;
 			width: 75px;
 		}`],
 
-		["img", ["src", "images/building2.png", "class", "building"],
+		["img", ["src", "images/building2.png", "class", "building house"],
 		`img:nth-child(2) {
 			height: 75px;
 			width: 75px;
@@ -409,14 +438,14 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(2, 3, ["img", ["src", "images/building2.png", "class", "building"],
-		`img:nth-child(1){
+	addToCell(2, 3, ["img", ["src", "images/building2.png", "class", "building house"],
+		`img:nth-child(1) {
 			height: 75px;
 			width: 75px;
 			margin-left:68px;
 		}`],
 
-		["img", ["src", "images/building2.png", "class", "building"],
+		["img", ["src", "images/building2.png", "class", "building house"],
 		`img:nth-child(2) {
 			height: 75px;
 			width: 75px;
@@ -426,7 +455,7 @@ function makeMap () {
 	);
 
 	addToCell(8, 2, ["img", ["src", "images/building2.png", "class", "building"],
-		`img:nth-child(1){
+		`img:nth-child(1) {
 			height: 75px;
 			width: 75px;
 			margin-left:68px;
@@ -442,7 +471,7 @@ function makeMap () {
 	);
 
 	addToCell(2, 4, ["img", ["src", "images/building2.png", "class", "building"],
-		`img:nth-child(1){
+		`img:nth-child(1) {
 			height: 75px;
 			width: 75px;
 			margin-left:68px;
@@ -458,14 +487,14 @@ function makeMap () {
 	);
 
 	
-	addToCell(3, 1, ["img", ["src", "images/building2.png", "class", "building upgradeable"],
-		`img:nth-child(1){
+	addToCell(3, 1, ["img", ["src", "images/building2.png", "class", "building house"],
+		`img:nth-child(1) {
 			height: 75px;
 			width: 75px;
 			margin-left:68px;
 		}`],
 
-		["img", ["src", "images/building2.png", "class", "building upgradeable"],
+		["img", ["src", "images/building2.png", "class", "building house"],
 		`img:nth-child(2) {
 			height: 75px;
 			width: 75px;
@@ -474,14 +503,14 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(7, 5, ["img", ["src", "images/building2.png", "class", "building"],
-		`img:nth-child(1){
+	addToCell(7, 5, ["img", ["src", "images/building2.png", "class", "building house"],
+		`img:nth-child(1) {
 			height: 75px;
 			width: 75px;
 			margin-left:68px;
 		}`],
 
-		["img", ["src", "images/building2.png", "class", "building"],
+		["img", ["src", "images/building2.png", "class", "building house"],
 		`img:nth-child(2) {
 			height: 75px;
 			width: 75px;
@@ -490,14 +519,14 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(3, 9, ["img", ["src", "images/building2.png", "class", "building"],
-		`img:nth-child(1){
+	addToCell(3, 9, ["img", ["src", "images/building2.png", "class", "building house"],
+		`img:nth-child(1) {
 			height: 75px;
 			width: 75px;
 			margin-left:68px;
 		}`],
 
-		["img", ["src", "images/building2.png", "class", "building"],
+		["img", ["src", "images/building2.png", "class", "building house"],
 		`img:nth-child(2) {
 			height: 75px;
 			width: 75px;
@@ -506,14 +535,14 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(2, 8, ["img", ["src", "images/building2.png", "class", "building"],
-		`img:nth-child(1){
+	addToCell(2, 8, ["img", ["src", "images/building2.png", "class", "building house"],
+		`img:nth-child(1) {
 			height: 75px;
 			width: 75px;
 			margin-left:68px;
 		}`],
 
-		["img", ["src", "images/building2.png", "class", "building"],
+		["img", ["src", "images/building2.png", "class", "building house"],
 		`img:nth-child(2) {
 			height: 75px;
 			width: 75px;
@@ -521,14 +550,14 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(0, 9, ["img", ["src", "images/building2.png", "class", "building"],
-		`img:nth-child(1){
+	addToCell(0, 9, ["img", ["src", "images/building2.png", "class", "building house"],
+		`img:nth-child(1) {
 			height: 75px;
 			width: 75px;
 			margin-left:68px;
 		}`],
 
-		["img", ["src", "images/building2.png", "class", "building"],
+		["img", ["src", "images/building2.png", "class", "building house"],
 		`img:nth-child(2) {
 			height: 75px;
 			width: 75px;
@@ -536,8 +565,8 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(0, 7, ["img", ["src", "images/building2.png", "class", "building"],
-		`img{
+	addToCell(0, 7, ["img", ["src", "images/building2.png", "class", "building house"],
+		`img {
 			height: 75px;
 			width: 75px;
 			margin-left:68px;
