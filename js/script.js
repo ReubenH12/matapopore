@@ -16,7 +16,7 @@ let ktkaValue = 6;
 let backgroundLvl = 1;
 
 let money = 100;
-let moneyInterval = 100;
+let moneyInterval = 1000;
 let moneyIncrement = 5;
 
 let menuState = "";
