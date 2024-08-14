@@ -162,19 +162,28 @@ function addUpgradeables () {
 
 function upgrade (building) {
 	if (building.classList.contains("house")) {
-		if (money >= 50) {
+		if (money >= 100) {
 			money -= 50;
 			console.log("Upgraded house!")
-			ktkaValue += 1;
-			moneyIncrement += 10;
+			ktkaValue += 0.3;
+			moneyIncrement += 1;
 		}
 	}
 	if (building.classList.contains("wastewater") ) {
-		if (money > 200) {
+		if (money > 3000) {
 			money -= 200;
 			console.log("Upgraded treatment plant!")
-			ktkaValue += 10;
-			money += 100;
+			ktkaValue += 1;
+			moneyIncrement += 1;
+		}
+	}
+
+	if (building.classList.contains("school") ) {
+		if (money > 2000) {
+			money -= 200;
+			console.log("Upgraded treatment plant!")
+			ktkaValue += 2;
+			moneyIncrement += 10;
 		}
 	}
 }
@@ -217,14 +226,14 @@ function addToCell (x, y, ...rest) {
 
 function makeMap () {
 
-	addToCell(1, 1, ["img", ["src", "images/building1.png", "class", "building upgradeable"],
+	addToCell(1, 1, ["img", ["src", "images/building1.png", "class", "building school"],
 		`img.building {
 			height: 250px;
 			width: 250px;
 		}`]
 	);
 
-	addToCell(1, 6, ["img", ["src", "images/building6.png", "class", "building"],
+	addToCell(1, 6, ["img", ["src", "images/building6.png", "class", "building wastewater"],
 		`img.building {
 			height: 175px;
 			width: 175px;
@@ -232,7 +241,7 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(3, 6, ["img", ["src", "images/building6.png", "class", "building"],
+	addToCell(3, 6, ["img", ["src", "images/building6.png", "class", "building wastewater"],
 		`img.building {
 			height: 175px;
 			width: 175px;
@@ -256,7 +265,7 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(8, 8, ["img", ["src", "images/building1.png", "class", "building"],
+	addToCell(8, 8, ["img", ["src", "images/building1.png", "class", "building school"],
 		`img.building {
 			height: 200px;
 			width: 200px;
@@ -334,13 +343,14 @@ function makeMap () {
 		`img:nth-child(1) {
 			height: 75px;
 			width: 75px;
+			margin-left: 70px;
 		}`],
 
 		["img", ["src", "images/building2.png", "class", "building house"],
 		`img:nth-child(2) {
 			height: 75px;
 			width: 75px;
-			margin: 5px;2
+			margin-left: 75px;
 		}`]
 	);
 
@@ -571,6 +581,15 @@ function makeMap () {
 			width: 75px;
 			margin-left:68px;
 			margin-top:68px;
+		}`],
+	);
+
+	addToCell(5, 7, ["img", ["src", "images/church.png"],
+		`img {
+			height: 175px;
+			width: 175px;
+			left: 175px;
+			top: 175px;
 		}`],
 	);
 
