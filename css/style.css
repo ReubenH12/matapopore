@@ -335,17 +335,7 @@ body {
     cursor: pointer;
 }
 
-.back {
-    margin-top: 140px;
-    margin-left: 10px;
-    background: #73AD21;
-    border-radius: 25px;
-    width: 100px;
-    text-align: right;
-    padding-right: 10px;
-}
-
-.back:hover {
-    background-color: #3e8e41;
-    color: white;
+.house {
+    height: 65px;
+    height: 65px;
 }
