@@ -15,7 +15,7 @@ let pos1 = 0,
 let ktkaValue = 6;
 let backgroundLvl = 1;
 
-let money = 1000000;
+let money = 100;
 let moneyInterval = 1000;
 let moneyIncrement = 5;
 
@@ -256,6 +256,10 @@ function addToCell (x, y, ...rest) {
 		newElement.addEventListener("mouseout", function(){hideUpgradeSymbol(newElement);})
     }
 }
+
+function toggleColor() {
+	document.getElementById("bg-cover").style.backgroundColor = "black";
+  }
 
 function makeMap () {
 
