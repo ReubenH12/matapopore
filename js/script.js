@@ -264,7 +264,7 @@ function toggleColor() {
 
 function makeMap () {
 
-	addToCell(1, 1, ["img", ["src", "images/building1.png", "class", "building school"],
+	addToCell(1, 1, ["img", ["src", "images/school.png", "class", "building school"],
 		`img.building {
 			height: 250px;
 			width: 250px;
@@ -303,7 +303,7 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(8, 8, ["img", ["src", "images/building1.png", "class", "building school"],
+	addToCell(8, 8, ["img", ["src", "images/school.png", "class", "building school"],
 		`img.building {
 			height: 200px;
 			width: 200px;
