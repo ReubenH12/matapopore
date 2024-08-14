@@ -259,7 +259,7 @@ function addToCell (x, y, ...rest) {
 }
 
 function toggleColor() {
-	document.getElementById("bg-cover").style.backgroundColor = "black";
+	document.getElementsByClassName("bg-cover").style.backgroundColor = "black";
   }
 
 function makeMap () {
