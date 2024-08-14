@@ -15,7 +15,7 @@ let pos1 = 0,
 let ktkaValue = 6;
 let backgroundLvl = 1;
 
-let money = 100;
+let money = 1000000;
 let moneyInterval = 1000;
 let moneyIncrement = 5;
 
@@ -45,6 +45,10 @@ window.onload = function () {
 };
 
 setInterval(function checkLoop () {
+	if (ktkaValue > 100) {
+		ktkaValue = 100;
+	}
+
 	let ktkaBarFill = document.getElementById("fill");
 	let ktkaBarValue = ktkaValue * 6;
 	let maxBarValue = gameHeight - 100;
@@ -68,7 +72,9 @@ setInterval(function checkLoop () {
 	}
 	map.style.backgroundImage = `url('images/background${backgroundLvl}.jpg')`;
 
-	moneyElement.innerHTML = `$${money}`
+	ktkaValueElement = document.querySelector("#ktka-value p:last-child").innerHTML = ktkaValue;
+	moneyElement.innerHTML = `$${money}`;
+	moneyElement.parentElement.parentElement.querySelector("#money-increment").innerHTML = `+$${moneyIncrement}/s`
 }, 100)
 
 setInterval(function giveMoney () {
@@ -162,16 +168,16 @@ function addUpgradeables () {
 
 function upgrade (building) {
 	if (building.classList.contains("house")) {
-		if (money >= 100) {
+		if (money >= 50) {
 			money -= 50;
 			console.log("Upgraded house!")
-			ktkaValue += 0.3;
+			ktkaValue += 1;
 			moneyIncrement += 1;
 		}
 	}
 	if (building.classList.contains("wastewater") ) {
 		if (money > 3000) {
-			money -= 200;
+			money -= 3000;
 			console.log("Upgraded treatment plant!")
 			ktkaValue += 1;
 			moneyIncrement += 1;
@@ -180,8 +186,8 @@ function upgrade (building) {
 
 	if (building.classList.contains("school") ) {
 		if (money > 2000) {
-			money -= 200;
-			console.log("Upgraded treatment plant!")
+			money -= 2000;
+			console.log("Upgraded school!")
 			ktkaValue += 2;
 			moneyIncrement += 10;
 		}

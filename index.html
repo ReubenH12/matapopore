@@ -43,14 +43,24 @@
                         </g>
                     </svg>
                 </div>
-                <div id="ktka-bar" class="ui-element">
-                    <div id="fill"></div>
+                <div id="ktka-bar-wrapper">
+                    <div id="ktka-bar" class="ui-element">
+                        <div id="fill"></div>
+                    </div>
+                    <div id="ktka-value">
+                        <p>Kaitiakitanga Value:</p><p>5</p>
+                    </div>
                 </div>
                 <div id="lvl-name" class="ui-element">
                     <p>Tawa</p>
                 </div>
-                <div id="money-box" class="ui-element"  onclick="showMenu('build')">
-                    <p id="money-value">$100</p>
+                <div id="money-box" class="ui-element">
+                    <div>
+                        <p id="money-value">$100</p>
+                    </div>
+                    <div>
+                        <p id="money-increment">5/s</p>
+                    </div>
                 </div>
                 <div id="home" class="menu">
                     <div class="close" onclick="showMenu('home')">X</div>
@@ -122,12 +132,6 @@
                     </div>
                     <div onclick="showMenu('credits'); showMenu('home')">Back</div>
                 </div>
-                <!-- <div id="settings" class="menu">
-                    <div class="close" onclick="showMenu('settings')">X</div>
-                    <h1 id="menu-header">Settings</h1>
-                    <div class="menu-container">
-                    </div>
-                </div> -->
             </div>
         </main>
     </body>
