@@ -133,7 +133,7 @@ body {
     overflow: hidden;
 }
 
-#ktka-bar-wrapper:hover #ktka-value {
+#ktka-bar-wrapper:hover #ktka-value, #ktka-bar-wrapper.active #ktka-value {
     visibility: visible;
     width: 193px;
 }
@@ -199,7 +199,7 @@ body {
     visibility: hidden;
 }
 
-#money-box:hover > div:last-child {
+#money-box:hover > div:last-child, #money-box.active > div:last-child {
     visibility: visible;
     top: 40px;
 }

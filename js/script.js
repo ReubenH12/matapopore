@@ -42,6 +42,7 @@ window.onload = function () {
 	makeGrid();
 	makeMap();
 	addUpgradeables();
+	addHoverListeners();
 };
 
 setInterval(function checkLoop () {
@@ -100,6 +101,32 @@ function showMenu(menu) {
 		shadowBox.style.pointerEvents = "none";
 		menuState = "";
 	}
+}
+
+function addHoverListeners () {
+	let moneyBox = document.getElementById("money-box");
+	let ktkaWrapper = document.getElementById("ktka-bar-wrapper");
+	let MBToggle = false;
+	let KWToggle = false;
+
+	moneyBox.addEventListener("click", function () {
+		if (!MBToggle) {
+			moneyBox.classList.add("active");
+			MBToggle = true;
+		} else {
+			moneyBox.classList.remove("active");
+			MBToggle = false;
+		}
+	})
+	ktkaWrapper.addEventListener("click", function () {
+		if (!KWToggle) {
+			ktkaWrapper.classList.add("active");
+			KWToggle = true;
+		} else {
+			ktkaWrapper.classList.remove("active");
+			KWToggle = false;
+		}
+	})
 }
 
 function dragElement(elmnt) {
