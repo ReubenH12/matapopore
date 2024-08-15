@@ -14,7 +14,7 @@ let pos1 = 0,
 	cursorX = 0,
 	cursorY = 0;
 
-let ktkaValue = 6;
+let ktkaValue = 60;
 let backgroundLvl = 1;
 
 let money = 1000000;
@@ -50,12 +50,12 @@ window.onload = function () {
 };
 
 setInterval(function checkLoop () {
-	if (ktkaValue > 100) {
-		ktkaValue = 100;
+	if (ktkaValue > 1000) {
+		ktkaValue = 1000;
 	}
 
 	let ktkaBarFill = document.getElementById("fill");
-	let ktkaBarValue = ktkaValue * 6;
+	let ktkaBarValue = ktkaValue * 0.6;
 	let maxBarValue = gameHeight - 100;
 	if (ktkaBarValue < 5) {
 		ktkaBarValue = 5;
@@ -67,15 +67,16 @@ setInterval(function checkLoop () {
 		ktkaBarFill.style.height = ktkaBarValue + "px";
 	}
 
-	backgroundLvl = Math.round(ktkaValue / 14);
+	backgroundLvl = Math.round(ktkaValue / 140);
 	if (backgroundLvl < 1) {
 		backgroundLvl = 1;
 	}
 	if (backgroundLvl > 7) {
 		backgroundLvl = 7;
 	}
-	map.style.backgroundImage = `url('images/background${backgroundLvl}.jpg')`;
-
+	if (map) {
+		map.style.backgroundImage = `url('images/background${backgroundLvl}.jpg')`;
+	}
 	ktkaValueElmnt.innerHTML = ktkaValue;
 	moneyValueElmnt.innerHTML = `$${money}`;
 	moneyIncrementElmnt.innerHTML = `+$${moneyIncrement}/s`
@@ -200,16 +201,16 @@ function upgrade (building) {
 		if (money >= 50) {
 			money -= 50;
 			console.log("Upgraded house!")
-			ktkaValue += 2;
-			moneyIncrement += 2;
+			ktkaValue += 20;
+			moneyIncrement += 20;
 		}
 	}
 	if (building.classList.contains("wastewater") ) {
 		if (money > 3000) {
 			money -= 2000;
 			console.log("Upgraded treatment plant!")
-			ktkaValue += 1;
-			moneyIncrement += 0;
+			ktkaValue += 10;
+			moneyIncrement += 50;
 		}
 	}
 
@@ -217,7 +218,7 @@ function upgrade (building) {
 		if (money > 500) {
 			money -= 500;
 			console.log("Upgraded school!")
-			ktkaValue += 2;
+			ktkaValue += 20;
 			moneyIncrement += 20;
 		}
 	}
