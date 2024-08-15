@@ -258,13 +258,19 @@ function addToCell (x, y, ...rest) {
 			styleElement.sheet.insertRule(`#map > div:nth-child(${cellIndex + 1}) ${rest[i][2]}`);
 		}
 		newElement.addEventListener("mouseover", function(){showUpgradeSymbol(newElement);});
-		newElement.addEventListener("mouseout", function(){hideUpgradeSymbol(newElement);})
+		newElement.addEventListener("mouseout", function(){hideUpgradeSymbol(newElement);});
     }
 }
 
 function toggleColor() {
-	document.getElementsByClassName("bg-cover").style.backgroundColor = "black";
-  }
+	// for (const i in document.getElementByClassName("bg-cover")) {
+	// 	i.classList.add("black");
+	// }
+	for (let i = 0; i < document.getElementByClassName("bg-cover").length; i++) {
+		document.getElementByClassName("bg-cover")[i].classList.add("black");
+		
+	}
+}
 
 function makeMap () {
 
