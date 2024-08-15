@@ -326,13 +326,6 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(1, 3, ["div", ["id", "grasslees"],
-		`#grasslees {
-			height: 200px;
-			width: 200px;
-			background-color: green;
-		}`]
-	);
 
 	addToCell(8, 4, ["img", ["src", "images/tawaSign.png"],
 		`img {
