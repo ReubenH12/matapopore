@@ -11,7 +11,6 @@ p {
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     font-style: normal;
-    
 }
 
 :root {
@@ -92,7 +91,6 @@ body {
     font-weight: 500;
     font-style: normal;
     font-size: 15px;
-    
 }
 
 #ktka-bar {
@@ -103,7 +101,6 @@ body {
     height: calc(var(--HEIGHT) - 100px);
     background-color: #6085ab;
     border-radius: 20px;
-    z-index: 1;
     /* background-image: url(../images/ktkabar.jpeg);
     background-position-y: bottom;
     background-size: 30px 10px;
@@ -170,7 +167,11 @@ body {
     font-size: 34px;
 }
 
-#money-box > div:first-child {
+/* #money-wrapper {
+    filter: blur(4px);
+} */
+
+#money-wrapper #money-value-box {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -179,14 +180,13 @@ body {
     background-color: #6085ab;
     border-radius: 10px;
     text-align: center;
-    z-index: 1;
 }
 
-#money-box > div:first-child > p {
+#money-wrapper #money-increment-box > p {
     margin-top: 15px;
 }
 
-#money-box > div:last-child {
+#money-wrapper #money-increment-box {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -199,7 +199,7 @@ body {
     visibility: hidden;
 }
 
-#money-box:hover > div:last-child, #money-box.active > div:last-child {
+#money-wrapper:hover #money-increment-box, #money-wrapper.active #money-increment-box {
     visibility: visible;
     top: 40px;
 }
@@ -223,7 +223,7 @@ body {
 }
 
 #map > div {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     pointer-events: none;
 }
 
@@ -309,12 +309,10 @@ body {
 
 #menu-icon {
     padding-top: 6px;
-
 }
 
 #matapopore-icon {
     padding-left: 100px;
-
 }
 
 .creditxt {

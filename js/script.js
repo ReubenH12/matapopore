@@ -3,8 +3,10 @@ let gameContainer,
 	gameHeight,
 	gameWidth,
 	mapHeight,
-	mapWidth;
-	let moneyElement;
+	mapWidth,
+	moneyValueElmnt,
+	moneyIncrementElmnt,
+	ktkaValueElmnt;
 
 
 let pos1 = 0,
@@ -15,7 +17,7 @@ let pos1 = 0,
 let ktkaValue = 6;
 let backgroundLvl = 1;
 
-let money = 100;
+let money = 1000000;
 let moneyInterval = 1000;
 let moneyIncrement = 5;
 
@@ -36,7 +38,9 @@ window.onload = function () {
 	gameWidth = gameContainer.offsetWidth;
 	mapHeight = map.offsetHeight;
 	mapWidth = map.offsetWidth;
-	moneyElement = document.getElementById("money-value");
+	moneyValueElmnt = document.getElementById("money-value");
+	moneyIncrementElmnt = document.getElementById("money-increment");
+	ktkaValueElmnt = document.querySelector("#ktka-value p:last-child");
 
 	dragElement(map);
 	makeGrid();
@@ -59,7 +63,6 @@ setInterval(function checkLoop () {
 	if (ktkaBarValue > maxBarValue) {
 		ktkaBarValue = maxBarValue;
 	}
-
 	if (ktkaBarFill.offsetHeight != ktkaBarValue) {
 		ktkaBarFill.style.height = ktkaBarValue + "px";
 	}
@@ -73,9 +76,9 @@ setInterval(function checkLoop () {
 	}
 	map.style.backgroundImage = `url('images/background${backgroundLvl}.jpg')`;
 
-	ktkaValueElement = document.querySelector("#ktka-value p:last-child").innerHTML = ktkaValue;
-	moneyElement.innerHTML = `$${money}`;
-	moneyElement.parentElement.parentElement.querySelector("#money-increment").innerHTML = `+$${moneyIncrement}/s`
+	ktkaValueElmnt.innerHTML = ktkaValue;
+	moneyValueElmnt.innerHTML = `$${money}`;
+	moneyIncrementElmnt.innerHTML = `+$${moneyIncrement}/s`
 }, 100)
 
 setInterval(function giveMoney () {
@@ -83,7 +86,6 @@ setInterval(function giveMoney () {
 }, moneyInterval)
 
 function showMenu(menu) {
-	console.log("shown menu")
 	let menuToShow = document.getElementById(menu);
 	let currentMenu = document.getElementById(menuState);
 	let uiElements = document.querySelectorAll(".ui-element");
@@ -104,17 +106,17 @@ function showMenu(menu) {
 }
 
 function addHoverListeners () {
-	let moneyBox = document.getElementById("money-box");
+	let moneyWrapper = document.getElementById("money-wrapper");
 	let ktkaWrapper = document.getElementById("ktka-bar-wrapper");
 	let MBToggle = false;
 	let KWToggle = false;
 
-	moneyBox.addEventListener("click", function () {
+	moneyWrapper.addEventListener("click", function () {
 		if (!MBToggle) {
-			moneyBox.classList.add("active");
+			moneyWrapper.classList.add("active");
 			MBToggle = true;
 		} else {
-			moneyBox.classList.remove("active");
+			moneyWrapper.classList.remove("active");
 			MBToggle = false;
 		}
 	})
@@ -526,7 +528,7 @@ function makeMap () {
 		}`],
 	);
 
-	addToCell(5, 7, ["img", ["src", "images/church.png"],
+	addToCell(5, 7, ["img", ["src", "images/church1.png"],
 		`img {
 			height: 175px;
 			width: 175px;
@@ -534,6 +536,4 @@ function makeMap () {
 			top: 175px;
 		}`],
 	);
-
 }
-
