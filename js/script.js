@@ -200,25 +200,25 @@ function upgrade (building) {
 		if (money >= 50) {
 			money -= 50;
 			console.log("Upgraded house!")
-			ktkaValue += 1;
-			moneyIncrement += 1;
+			ktkaValue += 2;
+			moneyIncrement += 2;
 		}
 	}
 	if (building.classList.contains("wastewater") ) {
 		if (money > 3000) {
-			money -= 3000;
+			money -= 2000;
 			console.log("Upgraded treatment plant!")
 			ktkaValue += 1;
-			moneyIncrement += 1;
+			moneyIncrement += 0;
 		}
 	}
 
 	if (building.classList.contains("school") ) {
-		if (money > 2000) {
-			money -= 2000;
+		if (money > 500) {
+			money -= 500;
 			console.log("Upgraded school!")
 			ktkaValue += 2;
-			moneyIncrement += 10;
+			moneyIncrement += 20;
 		}
 	}
 }
@@ -227,6 +227,7 @@ function showUpgradeSymbol (element) {
 	let newSymbol = document.createElement("img");
 	element.parentElement.appendChild(newSymbol);
 
+	
 	newSymbol.setAttribute("src", "images/upgradeSymbol.svg");
 	newSymbol.setAttribute("class", "upgrade-symbol");
 
