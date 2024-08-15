@@ -201,7 +201,7 @@ function upgrade (building) {
 		if (money >= 50) {
 			money -= 50;
 			console.log("Upgraded house!")
-			ktkaValue += 20;
+			ktkaValue += 5;
 			moneyIncrement += 20;
 		}
 	}
@@ -209,7 +209,7 @@ function upgrade (building) {
 		if (money > 3000) {
 			money -= 2000;
 			console.log("Upgraded treatment plant!")
-			ktkaValue += 10;
+			ktkaValue += 50;
 			moneyIncrement += 50;
 		}
 	}
