@@ -74,6 +74,10 @@ body {
     height: calc((100vh - var(--HEIGHT)) / 2);
 }
 
+.black {
+    background-color: black;
+}
+
 #menu-btn {
     position: absolute;
     top: 10px;
