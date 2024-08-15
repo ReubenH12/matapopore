@@ -320,10 +320,41 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(6, 2, ["img", ["src", "images/house1.png", "class", "building house"],
+	addToCell(6, 2, ["img", ["src", "images/house1.png", "class", "building nw"],
 		`img.building {
 			height: 200px;
 			width: 200px;
+		}`]
+	);
+
+	addToCell(5, 2, ["img", ["src", "images/house1.png", "class", "building house"],
+		`img:nth-child(1) {
+			margin-top:68px;
+			margin-left:68px;
+		}`],
+
+		["img", ["src", "images/house1.png", "class", "building house"],
+		`img:nth-child(2) {
+			margin: 15px;
+			
+		}`]
+	);
+
+	addToCell(6, 4, ["img", ["src", "images/house1.png", "class", "building house"]],
+
+		["img", ["src", "images/house1.png", "class", "building house"],
+		`img:nth-child(2) {
+			margin: 15px;
+			margin-top: 20px;
+		}`]
+	);
+
+	addToCell(5, 4, ["img", ["src", "images/house1.png", "class", "building house"]],
+
+		["img", ["src", "images/house1.png", "class", "building house"],
+		`img:nth-child(2) {
+			margin: 15px;
+			margin-top: 20px;
 		}`]
 	);
 
@@ -361,14 +392,10 @@ function makeMap () {
 	);
 
 	addToCell(0, 1, ["img", ["src", "images/house1.png", "class", "building house"],
-		`img:nth-child(1) {
+		`img {
 			margin-left: 70px;
 		}`],
 
-		["img", ["src", "images/house1.png", "class", "building house"],
-		`img:nth-child(2) {
-			margin-left: 75px;
-		}`]
 	);
 
 	addToCell(2, 0, ["img", ["src", "images/house1.png", "class", "building house"]],
@@ -506,9 +533,34 @@ function makeMap () {
 
 		["img", ["src", "images/house1.png", "class", "building house"],
 		`img:nth-child(2) {
-			margin: 15px;
+			margin-left: 50px;
 		}`]
 	);
+
+	addToCell(5, 8, ["img", ["src", "images/house1.png", "class", "building house"],
+		`img:nth-child(1) {
+			margin-left:68px;
+			margin-top:68px;
+		}`],
+
+		["img", ["src", "images/house1.png", "class", "building house"],
+		`img:nth-child(2) {
+			margin-left: 50px;
+		}`]
+	);
+
+	addToCell(7, 9, ["img", ["src", "images/house1.png", "class", "building house"],
+		`img:nth-child(1) {
+			margin-left:68px;
+			
+		}`],
+
+		["img", ["src", "images/house1.png", "class", "building house"],
+		`img:nth-child(2) {
+			margin-left: 50px;
+		}`]
+	);
+
 
 	addToCell(0, 9, ["img", ["src", "images/house1.png", "class", "building house"],
 		`img:nth-child(1) {
