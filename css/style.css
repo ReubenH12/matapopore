@@ -343,16 +343,50 @@ body {
 }
 
 .back {
-    margin-top: 140px;
-    margin-left: 10px;
+    position: absolute;
     background: #73AD21;
     border-radius: 25px;
     width: 100px;
     text-align: right;
+    margin-top: 20px ;
+    left: 10px;
     padding-right: 10px;
+    
+}
+
+.back p {
+    margin: 0;
+
 }
 
 .back:hover {
     background-color: #3e8e41;
     color: white;
 }
+
+.cls-1 {
+    stroke-miterlimit: 10;
+    stroke-width: 1px;
+  }
+
+  .cls-1, .cls-2, .cls-3 {
+    fill: #231f20;
+    stroke: #231f20;
+  }
+
+  .cls-2 {
+    stroke-miterlimit: 10;
+  }
+
+  .cls-3 {
+    stroke-miterlimit: 10;
+    stroke-width: 1px;
+  }
+
+  .back-arrow {
+    position: absolute;
+    top: 2px;
+    left: 30px;
+    height: 20px;
+    width: 20px;
+  }
