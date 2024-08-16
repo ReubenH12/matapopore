@@ -332,7 +332,7 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(8, 8, ["img", ["src", "images/house1.png", "class", "building school"],
+	addToCell(8, 8, ["img", ["src", "images/school1.png", "class", "building school"],
 		`img.building {
 			height: 200px;
 			width: 200px;
