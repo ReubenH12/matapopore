@@ -1,3 +1,30 @@
+const buildings = {
+    house: {
+		name: "house",
+		cost: 50, 
+		ktkaValIncrease: 20, 
+		monIncIncrease: 20, 
+	},
+    school: {
+		name: "school",
+		cost: 500, 
+		ktkaValIncrease: 20, 
+		monIncIncrease: 20, 
+	},
+    wastewater: {
+		name: "wastewater",
+		cost: 2000, 
+		ktkaValIncrease: 10, 
+		monIncIncrease: 50, 
+	},
+    shop: {
+		name: "shop", 
+		cost: 200, 
+		ktkaValIncrease: 80, 
+		monIncIncrease: 60,
+	},
+};
+
 let gameContainer,
 	map,
 	gameHeight,
@@ -7,7 +34,6 @@ let gameContainer,
 	moneyValueElmnt,
 	moneyIncrementElmnt,
 	ktkaValueElmnt;
-
 
 let pos1 = 0,
 	pos2 = 0,
@@ -154,7 +180,7 @@ function dragElement(elmnt) {
 		pos2 = cursorY - e.clientY;
 		cursorX = e.clientX;
 		cursorY = e.clientY;
-		// console.log(`MapX = ${elmnt.offsetLeft}, MapY = ${elmnt.offsetTop} ${pos1} ${pos2} ${cursorX} ${cursorY}`); // MAP POSITION DEBUG LINE
+		// console.log(`MapX = ${elmnt.offsetLeft}, MapY = ${elmnt.offsetTop} ${pos1} ${pos2} ${cursorX} ${cursorY}`);
 		if (elmnt.offsetLeft - pos1 <= 0 && elmnt.offsetLeft - pos1 >= maxXpos) {
 			elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
 		}
@@ -196,53 +222,43 @@ function addUpgradeables () {
 	}
 }
 
-function upgrade (building) {
-	if (building.classList.contains("house")) {
-		if (money >= 50) {
-			money -= 50;
-			console.log("Upgraded house!")
-			ktkaValue += 20;
-			moneyIncrement += 20;
-		}
-	}
-	if (building.classList.contains("wastewater") ) {
-		if (money > 3000) {
-			money -= 2000;
-			console.log("Upgraded treatment plant!")
-			ktkaValue += 10;
-			moneyIncrement += 50;
-		}
-	}
+function upgrade (buildingElmnt) {
+    let buildingType = buildings[buildingElmnt.classList[1]];
+	let buildingLevel = buildingElmnt.getAttribute("src").replace(/.*(\d)\.png$/, "$1");
 
-	if (building.classList.contains("school") ) {
-		if (money > 500) {
-			money -= 500;
-			console.log("Upgraded school!")
-			ktkaValue += 20;
-			moneyIncrement += 20;
+	if (buildingLevel == 1) {
+		if (buildingType.cost < money) {
+			money -= buildingType.cost;
+			ktkaValue += buildingType.ktkaValIncrease;
+			moneyIncrement += buildingType.monIncIncrease;
+			// console.log(`Upgraded ${buildingType.name}!`);
+			buildingElmnt.setAttribute("src", `images/${buildingType.name}2.png`)
 		}
 	}
 }
 
 function showUpgradeSymbol (element) {
-	let newSymbol = document.createElement("img");
-	element.parentElement.appendChild(newSymbol);
+	if (element.getAttribute("src").replace(/.*(\d)\.png$/, "$1") < 2) {
+		let newSymbol = document.createElement("img");
+		element.parentElement.appendChild(newSymbol);
 
-	
-	newSymbol.setAttribute("src", "images/upgradeSymbol.svg");
-	newSymbol.setAttribute("class", "upgrade-symbol");
+		newSymbol.setAttribute("src", "images/upgradeSymbol.svg");
+		newSymbol.setAttribute("class", "upgrade-symbol");
 
-	let elmntTop = element.offsetTop;
-	let elmntLeft = element.offsetLeft;
-	let elmntHeight = element.offsetHeight;
-	let elmntWidth = element.offsetWidth;
-	newSymbol.style.top = `${elmntTop + elmntHeight / 2 - 50 / 2}px`;
-	newSymbol.style.left = `${elmntLeft + elmntWidth / 2 - 50 / 2}px`;
+		let elmntTop = element.offsetTop;
+		let elmntLeft = element.offsetLeft;
+		let elmntHeight = element.offsetHeight;
+		let elmntWidth = element.offsetWidth;
+		newSymbol.style.top = `${elmntTop + elmntHeight / 2 - 50 / 2}px`;
+		newSymbol.style.left = `${elmntLeft + elmntWidth / 2 - 50 / 2}px`;
 	}
+}
 
-function hideUpgradeSymbol (element, event) {
-	let newSymbol = element.parentElement.querySelector(".upgrade-symbol");
-	newSymbol.remove();
+function hideUpgradeSymbol (element) {
+	// if (element.getAttribute("src").replace(/.*(\d)\.png$/, "$1") < 2) {
+		let newSymbol = element.parentElement.querySelector(".upgrade-symbol");
+		newSymbol.remove();
+	// }
 }
 
 function addToCell (x, y, ...rest) {
@@ -263,12 +279,17 @@ function addToCell (x, y, ...rest) {
 }
 
 function toggleColor() {
-	// for (const i in document.getElementByClassName("bg-cover")) {
-	// 	i.classList.add("black");
-	// }
-	for (let i = 0; i < document.getElementByClassName("bg-cover").length; i++) {
-		document.getElementByClassName("bg-cover")[i].classList.add("black");
-		
+	let bgCovers = document.getElementsByClassName("bg-cover");
+	if (!bgCovers[0].classList.contains("black")) {
+		for (let i = 0; i < bgCovers.length; i++) {
+			bgCovers[i].classList.add("black");
+			document.body.classList.add("black");
+		}
+	} else {
+		for (let i = 0; i < bgCovers.length; i++) {
+			bgCovers[i].classList.remove("black");
+			document.body.classList.remove("black");
+		}
 	}
 }
 
@@ -281,19 +302,17 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(1, 6, ["img", ["src", "images/building6.png", "class", "building wastewater"],
+	addToCell(1, 5, ["img", ["src", "images/building6.png", "class", "building wastewater"],
 		`img.building {
 			height: 175px;
 			width: 175px;
-			margin-top: -200px;
 		}`]
 	);
 
-	addToCell(3, 6, ["img", ["src", "images/building6.png", "class", "building wastewater"],
+	addToCell(3, 5, ["img", ["src", "images/building6.png", "class", "building wastewater"],
 		`img.building {
 			height: 175px;
 			width: 175px;
-			margin-top: -200px;
 		}`]
 	);
 
@@ -313,7 +332,7 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(8, 8, ["img", ["src", "images/school1.png", "class", "building school"],
+	addToCell(8, 8, ["img", ["src", "images/house1.png", "class", "building school"],
 		`img.building {
 			height: 200px;
 			width: 200px;
@@ -537,10 +556,10 @@ function makeMap () {
 
 	addToCell(5, 7, ["img", ["src", "images/church1.png"],
 		`img {
-			height: 175px;
-			width: 175px;
-			left: 175px;
-			top: 175px;
+			height: 200px;
+			width: 200px;
+			left: 75px;
+			top: 75px;
 		}`],
 	);
 }
