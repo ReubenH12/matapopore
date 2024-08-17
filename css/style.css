@@ -367,26 +367,26 @@ body {
 .cls-1 {
     stroke-miterlimit: 10;
     stroke-width: 1px;
-  }
+}
 
-  .cls-1, .cls-2, .cls-3 {
+.cls-1, .cls-2, .cls-3 {
     fill: #231f20;
     stroke: #231f20;
-  }
+}
 
-  .cls-2 {
+.cls-2 {
     stroke-miterlimit: 10;
-  }
+}
 
-  .cls-3 {
+.cls-3 {
     stroke-miterlimit: 10;
     stroke-width: 1px;
-  }
+}
 
-  .back-arrow {
+.back-arrow {
     position: absolute;
     top: 2px;
     left: 30px;
     height: 20px;
     width: 20px;
-  }
+}

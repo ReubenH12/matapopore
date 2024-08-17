@@ -56,9 +56,9 @@ const cellSize = 150;
 
 const styleElement = document.createElement("style");
 
-let boundUpgrade,
-	boundShowUS,
-	boundHideUS;
+// let boundUpgrade,
+// 	boundShowUS,
+// 	boundHideUS;
 
 window.onload = function () {
 	document.head.appendChild(styleElement);
@@ -219,66 +219,51 @@ function makeGrid () {
 	}
 }
 
-function bound (functionToBind, param) {
-	return functionToBind.bind(null, param);
-}
-
 function addUpgradeables () {
 	let upgradeables = document.getElementsByClassName("building");
 	for (let i = 0; i < upgradeables.length; i++) {
-		boundUpgrade = upgrade.bind(null, upgradeables[i]);
-		// console.log(boundUpgrade);
-		upgradeables[i].addEventListener("click", boundUpgrade);
-		// console.log()
+		upgradeables[i].addEventListener("click", upgrade);
 	}
 }
 
-function upgrade (buildingElmnt) {
+function upgrade (event) {
+	let buildingElmnt = event.currentTarget;
     let buildingType = buildings[buildingElmnt.classList[1]];
 	let buildingName = buildingElmnt.getAttribute("src").replace(/.*\/(.*)\d\.png$/, "$1");
-	let buildingLevel = buildingElmnt.getAttribute("src").replace(/.*(\d)\.png$/, "$1");
 
-	if (buildingLevel == 1) {
-		if (buildingType.cost < money) {
-			money -= buildingType.cost;
-			ktkaValue += buildingType.ktkaValIncrease;
-			moneyIncrement += buildingType.monIncIncrease;
-			// console.log(`Upgraded ${buildingType.name}!`);
-			buildingElmnt.setAttribute("src", `images/${buildingName}2.png`);
-			buildingElmnt.removeEventListener("click", boundUpgrade);
-			// buildingElmnt.removeEventListener("mouseover", boundShowUS);
-			// buildingElmnt.removeEventListener("mouseout", boundHideUS);
-			buildingElmnt.classList.remove("upgradeable");
-		}
+	if (buildingType.cost < money) {
+		money -= buildingType.cost;
+		ktkaValue += buildingType.ktkaValIncrease;
+		moneyIncrement += buildingType.monIncIncrease;
+		buildingElmnt.setAttribute("src", `images/${buildingName}2.png`);
+		buildingElmnt.removeEventListener("click", upgrade);
+		buildingElmnt.removeEventListener("mouseover", showUpgradeSymbol);
+		buildingElmnt.classList.remove("upgradeable");
 	}
 }
 
-function printAThing (thing) {
-	console.log(thing)
+function showUpgradeSymbol (event) {
+	element = event.currentTarget;
+	let newSymbol = document.createElement("img");
+	element.parentElement.appendChild(newSymbol);
+
+	newSymbol.setAttribute("src", "images/upgradeSymbol.svg");
+	newSymbol.setAttribute("class", "upgrade-symbol");
+
+	let elmntTop = element.offsetTop;
+	let elmntLeft = element.offsetLeft;
+	let elmntHeight = element.offsetHeight;
+	let elmntWidth = element.offsetWidth;
+	newSymbol.style.top = `${elmntTop + elmntHeight / 2 - 50 / 2}px`;
+	newSymbol.style.left = `${elmntLeft + elmntWidth / 2 - 50 / 2}px`;
 }
 
-function showUpgradeSymbol (element) {
-	// if (element.getAttribute("src").replace(/.*(\d)\.png$/, "$1") < 2) {
-		let newSymbol = document.createElement("img");
-		element.parentElement.appendChild(newSymbol);
-
-		newSymbol.setAttribute("src", "images/upgradeSymbol.svg");
-		newSymbol.setAttribute("class", "upgrade-symbol");
-
-		let elmntTop = element.offsetTop;
-		let elmntLeft = element.offsetLeft;
-		let elmntHeight = element.offsetHeight;
-		let elmntWidth = element.offsetWidth;
-		newSymbol.style.top = `${elmntTop + elmntHeight / 2 - 50 / 2}px`;
-		newSymbol.style.left = `${elmntLeft + elmntWidth / 2 - 50 / 2}px`;
-	// }
-}
-
-function hideUpgradeSymbol (element) {
-	// if (element.getAttribute("src").replace(/.*(\d)\.png$/, "$1") < 2) {
-		let newSymbol = element.parentElement.querySelector(".upgrade-symbol");
+function hideUpgradeSymbol (event) {
+	element = event.currentTarget;
+	let newSymbol = element.parentElement.querySelector(".upgrade-symbol");
+	if (newSymbol) {
 		newSymbol.remove();
-	// }
+	}
 }
 
 function addToCell (x, y, ...rest) {
@@ -293,10 +278,8 @@ function addToCell (x, y, ...rest) {
 		if (rest[i][2]) {
 			styleElement.sheet.insertRule(`#map > div:nth-child(${cellIndex + 1}) ${rest[i][2]}`);
 		}
-		boundShowUS = bound(showUpgradeSymbol, newElement);
-		boundHideUS = bound(hideUpgradeSymbol, newElement);
-		newElement.addEventListener("mouseover", boundShowUS);
-		newElement.addEventListener("mouseout", boundHideUS);
+		newElement.addEventListener("mouseover", showUpgradeSymbol);
+		newElement.addEventListener("mouseout", hideUpgradeSymbol);
     }
 }
 
@@ -347,7 +330,7 @@ function makeMap () {
 	);
 
 	addToCell(1, 8, ["img", ["src", "images/pinkPineapple1.png", "class", "building shop upgradeable"],
-		`img {
+		`img.building {
 			height: 170px;
 			width: 170px;
 			margin-top: 20px;
@@ -433,7 +416,7 @@ function makeMap () {
 	);
 
 	addToCell(0, 1, ["img", ["src", "images/house1.png", "class", "building house upgradeable"],
-		`img {
+		`img.building {
 			margin-left: 70px;
 		}`],
 
@@ -615,14 +598,14 @@ function makeMap () {
 	);
 
 	addToCell(0, 7, ["img", ["src", "images/house1.png", "class", "building house upgradeable"],
-		`img {
+		`img.building {
 			margin-left:68px;
 			margin-top:68px;
 		}`],
 	);
 
 	addToCell(5, 7, ["img", ["src", "images/church1.png", "class", "building school upgradeable"],
-		`img {
+		`img.building {
 			height: 200px;
 			width: 200px;
 			left: 75px;
