@@ -3,25 +3,25 @@ const buildings = {
 		name: "house",
 		cost: 50, 
 		ktkaValIncrease: 15, 
-		monIncIncrease: 10, 
+		monIncIncrease: 1, 
 	},
     school: {
 		name: "school",
-		cost: 500, 
+		cost: 750, 
 		ktkaValIncrease: 10, 
 		monIncIncrease: 30, 
 	},
     wastewater: {
 		name: "wastewater",
-		cost: 2000, 
+		cost: 10000, 
 		ktkaValIncrease: 90, 
 		monIncIncrease: 5, 
 	},
     shop: {
 		name: "shop", 
-		cost: 1000, 
+		cost: 1500, 
 		ktkaValIncrease: 5, 
-		monIncIncrease: 40,
+		monIncIncrease: 50,
 	},
 };
 
@@ -43,9 +43,9 @@ let pos1 = 0,
 let ktkaValue = 60;
 let backgroundLvl = 1;
 
-let money = 1000000;
+let money = 100;
 let moneyInterval = 1000;
-let moneyIncrement = 5;
+let moneyIncrement = 2;
 
 let menuState = "";
 
