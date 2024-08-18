@@ -247,15 +247,15 @@ function showUpgradeSymbol (event) {
 	let newSymbol = document.createElement("img");
 	element.parentElement.appendChild(newSymbol);
 
-	newSymbol.setAttribute("src", "images/upgradeSymbol.svg");
+	newSymbol.setAttribute("src", "images/houseUpgradeSymbol.png");
 	newSymbol.setAttribute("class", "upgrade-symbol");
 
 	let elmntTop = element.offsetTop;
 	let elmntLeft = element.offsetLeft;
 	let elmntHeight = element.offsetHeight;
 	let elmntWidth = element.offsetWidth;
-	newSymbol.style.top = `${elmntTop + elmntHeight / 2 - 50 / 2}px`;
-	newSymbol.style.left = `${elmntLeft + elmntWidth / 2 - 50 / 2}px`;
+	newSymbol.style.top = `${elmntTop + elmntHeight / 2 - 120 / 2}px`;
+	newSymbol.style.left = `${elmntLeft + elmntWidth / 2 - 35}px`;
 }
 
 function hideUpgradeSymbol (event) {

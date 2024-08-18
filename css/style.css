@@ -327,8 +327,8 @@ body {
 }
 
 .upgrade-symbol {
-    height: 50px;
-	width: 50px;
+    height: 120px;
+	/* width: 175px; */
     position: absolute;
     pointer-events: none;
 }
