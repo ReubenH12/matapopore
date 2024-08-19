@@ -56,10 +56,6 @@ const cellSize = 150;
 
 const styleElement = document.createElement("style");
 
-// let boundUpgrade,
-// 	boundShowUS,
-// 	boundHideUS;
-
 window.onload = function () {
 	document.head.appendChild(styleElement);
 	gameContainer = document.getElementById("game-container");
