@@ -312,15 +312,17 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(1, 5, ["img", ["src", "images/wastewater1.png", "class", "building wastewater upgradeable"],
+	addToCell(1, 6, ["img", ["src", "images/wastewater1.png", "class", "building wastewater upgradeable"],
 		`img.building {
 			height: 175px;
 			width: 175px;
+			margin-top: 30px;
 		}`]
 	);
 
-	addToCell(3, 5, ["img", ["src", "images/wastewater1.png", "class", "building wastewater upgradeable"],
+	addToCell(3, 6, ["img", ["src", "images/wastewater1.png", "class", "building wastewater upgradeable"],
 		`img.building {
+			margin-top: 14px;
 			height: 175px;
 			width: 175px;
 		}`]
