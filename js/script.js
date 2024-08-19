@@ -43,7 +43,7 @@ let pos1 = 0,
 let ktkaValue = 60;
 let backgroundLvl = 1;
 
-let money = 100;
+let money = 100000;
 let moneyInterval = 1000;
 let moneyIncrement = 2;
 
@@ -239,28 +239,33 @@ function upgrade (event) {
 		buildingElmnt.removeEventListener("click", upgrade);
 		buildingElmnt.removeEventListener("mouseover", showUpgradeSymbol);
 		buildingElmnt.classList.remove("upgradeable");
+		hideUpgradeSymbol(null, buildingElmnt);
 	}
 }
 
 function showUpgradeSymbol (event) {
-	element = event.currentTarget;
+	buildingElmnt = event.currentTarget;
+	let buildingName = buildingElmnt.getAttribute("src").replace(/.*\/(.*)\d\.png$/, "$1");
+	console.log(buildingName)
 	let newSymbol = document.createElement("img");
-	element.parentElement.appendChild(newSymbol);
+	buildingElmnt.parentElement.appendChild(newSymbol);
 
-	newSymbol.setAttribute("src", "images/houseUpgradeSymbol.png");
+	newSymbol.setAttribute("src", `images/${buildingName}UpgradePopup.png`);
 	newSymbol.setAttribute("class", "upgrade-symbol");
 
-	let elmntTop = element.offsetTop;
-	let elmntLeft = element.offsetLeft;
-	let elmntHeight = element.offsetHeight;
-	let elmntWidth = element.offsetWidth;
+	let elmntTop = buildingElmnt.offsetTop;
+	let elmntLeft = buildingElmnt.offsetLeft;
+	let elmntHeight = buildingElmnt.offsetHeight;
+	let elmntWidth = buildingElmnt.offsetWidth;
 	newSymbol.style.top = `${elmntTop + elmntHeight / 2 - 120 / 2}px`;
 	newSymbol.style.left = `${elmntLeft + elmntWidth / 2 - 35}px`;
 }
 
-function hideUpgradeSymbol (event) {
-	element = event.currentTarget;
-	let newSymbol = element.parentElement.querySelector(".upgrade-symbol");
+function hideUpgradeSymbol (event, element) {
+	if (event) {
+		element = event.currentTarget;
+	}
+	newSymbol = element.parentElement.querySelector(".upgrade-symbol");
 	if (newSymbol) {
 		newSymbol.remove();
 	}
