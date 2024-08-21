@@ -19,7 +19,7 @@ const buildings = {
 	},
     shop: {
 		name: "shop", 
-		cost: 1500, 
+		cost: 750, 
 		ktkaValIncrease: 5, 
 		monIncIncrease: 50,
 	},
