@@ -43,7 +43,7 @@ let pos1 = 0,
 let ktkaValue = 60;
 let backgroundLvl = 1;
 
-let money = 100000;
+let money = 50;
 let moneyInterval = 1000;
 let moneyIncrement = 2;
 
@@ -299,6 +299,17 @@ function toggleColor() {
 	}
 }
 
+
+// audio player
+var backGaudio = document.getElementById("backGaudio");
+
+function togglePlay() {
+  return backGaudio.paused ? backGaudio.play() : backGaudio.pause();
+};
+
+
+
+
 function makeMap () {
 
 	addToCell(1, 1, ["img", ["src", "images/school1.png", "class", "building school upgradeable"],
@@ -390,11 +401,12 @@ function makeMap () {
 	);
 
 
-	addToCell(8, 4, ["img", ["src", "images/tawa1.png", "class", "building house upgradeable"],
+	addToCell(7, 3, ["img", ["src", "images/tawa1.png", "class", "building house upgradeable"],
 		`img.building {
 			height: 100px;
 			width: 200px;
-			margin: 5px;
+			margin-left: 120px;
+			margin-top: 100px;
 		}`],
 
 	);
@@ -408,11 +420,16 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(7, 0, ["img", ["src", "images/house1.png", "class", "building house upgradeable"]],
+	addToCell(0, 5, ["img", ["src", "images/house1.png", "class", "building house upgradeable"],
 
-		["img", ["src", "images/house1.png", "class", "building house upgradeable"],
+		`img:nth-child(1) {
+			margin-left:68px;
+		}`],
+
+		["img", ["src", "images/modernHouse1.png", "class", "building house upgradeable"],
 		`img:nth-child(2) {
-			margin: 5px;
+			margin-left: 60px;
+			margin-top: 100px;
 		}`]
 	);
 
@@ -431,7 +448,7 @@ function makeMap () {
 
 	);
 
-	addToCell(2, 0, ["img", ["src", "images/house1.png", "class", "building house upgradeable"]],
+	addToCell(8, 1, ["img", ["src", "images/house1.png", "class", "building house upgradeable"]],
 
 		["img", ["src", "images/house1.png", "class", "building house upgradeable"],
 		`img:nth-child(2) {
@@ -498,7 +515,7 @@ function makeMap () {
 		}`]
 	);
 
-	addToCell(8, 2, ["img", ["src", "images/house1.png", "class", "building house upgradeable"],
+	addToCell(2, 5, ["img", ["src", "images/house1.png", "class", "building house upgradeable"],
 		`img:nth-child(1) {
 			margin-left:68px;
 		}`],
